@@ -11,3 +11,5 @@ keycode 74 = XF86AudioMute
 keycode 75 = XF86AudioLowerVolume
 !! raise volume button
 keycode 76 = XF86AudioRaiseVolume
+!! fullscreen window button? the one above 5
+keycode 70 = XF86TouchpadToggle
