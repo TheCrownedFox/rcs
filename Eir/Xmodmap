@@ -1,0 +1,13 @@
+!! search key
+keycode 133 = Caps_Lock
+!! lower brightness key
+!keycode 72 = XF86XK_MonBrightnessDown
+keycode 72 = XF86MonBrightnessDown
+!! raise brightness key
+keycode 73 = XF86MonBrightnessUp
+!! mute button
+keycode 74 = XF86AudioMute
+!! lower volume button
+keycode 75 = XF86AudioLowerVolume
+!! raise volume button
+keycode 76 = XF86AudioRaiseVolume
