@@ -48,8 +48,8 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "uxterm", NULL };
-static const char* raiseBright = { "sudo", "setBright", "inc", "10", NULL};
-static const char* lowerBright = { "sudo", "setBright", "dec", "10", NULL};
+static const char* raiseBright = { "setBright", "inc", "10", NULL};
+static const char* lowerBright = { "setBright", "dec", "10", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
