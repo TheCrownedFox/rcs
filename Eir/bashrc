@@ -117,6 +117,9 @@ if [ -n "$SSH_CLIENT" ] ; then
     export PS1='\[\e[0;31m\]\u@\h:\w\$\[\e[m\] '
 fi
 
+# colors
+
+
 # set :q to exit terminal window like it quits in vim
 alias :q=exit
 alias asgard="ssh -o PORT=8081 austin@lightningcougar.dyndns.info"

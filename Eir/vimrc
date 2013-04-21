@@ -1,7 +1,10 @@
 
+"set colorscheme
+colorscheme molokai
 
 "set the no vi combatible
 set nocompatible
+
 
 "begin pathogen
 execute pathogen#infect()
@@ -38,6 +41,7 @@ filetype indent plugin on
 
 " turn on line numbers
 set number
+
 
 " chage vimdiff colors
 "if &diff
