@@ -16,9 +16,16 @@ execute pathogen#infect()
 :command W w
 :command Tab s/\t/    /g
 
-"set \ key mappings
-nmap \c :Ctermvsplit
-nmap \n :NERDTreeToggle
+" set leader key to \
+let mapleader = "\\"
+
+"nunmap <leader>s
+
+"set leader key mappings
+nmap <leader>c :Ctermvsplit<cr>
+nmap <leader>n :NERDTreeToggle<cr>
+nmap <leader>v :vsplit $MYVIMRC<cr>
+"nmap <leader>sv :source $MYVIMRC<cr>
 
 "set syntax
 syntax on
