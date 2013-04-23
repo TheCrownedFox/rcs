@@ -5,17 +5,14 @@ colorscheme molokai
 "set the no vi combatible
 set nocompatible
 
-
 "begin pathogen
 execute pathogen#infect()
 
 "set commande aliases
-":command Cterm ConqueTerm bash
 ":command Ctermsplit ConquTermSplit bash
 ":command Ctermvsplit ConqueTermVSplit bash
 ":command W w
 ":command Tab s/\t/    /g
-nmap :Cterm :ConqueTerm bash
 nmap :Ctermvsplit :ConqueTermVSplit bash
 nmap :W :w
 nmap :Tab :s/\t/    /g
@@ -75,9 +72,14 @@ au BufWinenter * silent! loadview
 
 "function to scroll down
 function LazyScrollDown()
+    let botLine = line("w$")
+    if getpos('.')[1] == botLine
+        echom "Already at bottom!"
+        return
+    endif
     let c = winheight(0) - 5
     normal! L
-    while c > 0
+    while c > 0 && getpos('.')[1] != botLine
         normal! j
         redraw
         sleep 20m
@@ -87,9 +89,14 @@ endfunction
 
 "function to scroll up
 function LazyScrollUp()
+    let topLine = line("w0")
+    if getpos('.')[1] == topLine
+        echom "Already at top!"
+        return
+    endif
     let c = winheight(0) - 5
     normal! H
-    while c > 0
+    while c > 0 && getpos('.')[1] != topLine
         normal! k
         redraw
         sleep 20m
@@ -97,5 +104,6 @@ function LazyScrollUp()
     endwhile
 endfunction
 
+" remap keys to functions
 nnoremap J :call LazyScrollDown()<cr>
 nnoremap K :call LazyScrollUp()<cr>
