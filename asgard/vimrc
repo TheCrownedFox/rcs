@@ -39,6 +39,15 @@ filetype indent plugin on
 " turn on line numbers
 set number
 
+
+" chage vimdiff colors
+"if &diff
+    highlight DiffAdd ctermbg=red ctermfg=black
+    highlight DiffChange ctermbg=red ctermfg=black
+    highlight DiffDelete ctermbg=red ctermfg=black
+"endif
+    
+
 " set folding
 set foldmethod=indent
 "set foldnestmax=2
