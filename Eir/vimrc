@@ -72,7 +72,7 @@ au BufWinenter * silent! loadview
 
 "function to scroll down
 function LazyScrollDown()
-    let botLine = line("w$")
+    let botLine = line("$")
     if getpos('.')[1] == botLine
         echom "Already at bottom!"
         return
@@ -89,7 +89,7 @@ endfunction
 
 "function to scroll up
 function LazyScrollUp()
-    let topLine = line("w0")
+    let topLine = 1
     if getpos('.')[1] == topLine
         echom "Already at top!"
         return

@@ -111,6 +111,8 @@ fi
 # THE STUFF THAT I DID!!!
 #
 
+# set TERM env variable to 256 colors
+TERM=xterm-256color
 # set a different prompt if logged in via ssh
 # currently switches color to red
 if [ -n "$SSH_CLIENT" ] ; then
