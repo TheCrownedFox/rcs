@@ -5,16 +5,17 @@ colorscheme molokai
 "set the no vi combatible
 set nocompatible
 
-
 "begin pathogen
 execute pathogen#infect()
 
 "set commande aliases
-:command Cterm ConqueTerm bash
-:command Ctermsplit ConquTermSplit bash
-:command Ctermvsplit ConqueTermVSplit bash
-:command W w
-:command Tab s/\t/    /g
+":command Ctermsplit ConquTermSplit bash
+":command Ctermvsplit ConqueTermVSplit bash
+":command W w
+":command Tab s/\t/    /g
+nmap :Ctermvsplit :ConqueTermVSplit bash
+nmap :W :w
+nmap :Tab :s/\t/    /g
 
 " set leader key to \
 let mapleader = "\\"
@@ -22,10 +23,10 @@ let mapleader = "\\"
 "nunmap <leader>s
 
 "set leader key mappings
-nmap <leader>c :Ctermvsplit<cr>
-nmap <leader>n :NERDTreeToggle<cr>
-nmap <leader>v :vsplit $MYVIMRC<cr>
-"nmap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>c :Ctermvsplit<cr>
+nnoremap <leader>n :NERDTreeToggle<cr>
+nnoremap <leader>v :vsplit $MYVIMRC<cr>
+nnoremap <leader>s :source $MYVIMRC<cr>
 
 "set syntax
 syntax on
@@ -67,3 +68,42 @@ set nofoldenable
 " save foldings
 au BufWinLeave * silent! mkview
 au BufWinenter * silent! loadview
+
+
+"function to scroll down
+function LazyScrollDown()
+    let botLine = line("w$")
+    if getpos('.')[1] == botLine
+        echom "Already at bottom!"
+        return
+    endif
+    let c = winheight(0) - 5
+    normal! L
+    while c > 0 && getpos('.')[1] != botLine
+        normal! j
+        redraw
+        sleep 20m
+        let c -= 1
+    endwhile
+endfunction
+
+"function to scroll up
+function LazyScrollUp()
+    let topLine = line("w0")
+    if getpos('.')[1] == topLine
+        echom "Already at top!"
+        return
+    endif
+    let c = winheight(0) - 5
+    normal! H
+    while c > 0 && getpos('.')[1] != topLine
+        normal! k
+        redraw
+        sleep 20m
+        let c -= 1
+    endwhile
+endfunction
+
+" remap keys to functions
+nnoremap J :call LazyScrollDown()<cr>
+nnoremap K :call LazyScrollUp()<cr>
