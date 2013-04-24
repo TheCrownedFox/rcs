@@ -123,6 +123,7 @@ fi
 # set :q to exit terminal window like it quits in vim
 alias :q=exit
 alias asgard="ssh -o PORT=8081 austin@lightningcougar.dyndns.info"
+alias chromeos="sudo cgpt -i 6 -P 0 -S 1 /dev/sda"
 
 # set aliases for traveling up directories quickly
 alias u='cd ..'
