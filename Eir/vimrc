@@ -1,22 +1,22 @@
 
+"set the no vi combatible
+set nocompatible
+
 "set syntax
 syntax on
 
 "set colorscheme
 colorscheme molokai
 
-"set the no vi combatible
-set nocompatible
-
 "begin pathogen
 execute pathogen#infect()
 
 "set commande aliases
 ":command Ctermsplit ConquTermSplit bash
-":command Ctermvsplit ConqueTermVSplit bash
+command Ctermvsplit ConqueTermVSplit bash
 ":command W w
 ":command Tab s/\t/    /g
-nmap :Ctermvsplit :ConqueTermVSplit bash
+"nmap :Ctermvsplit :ConqueTermVSplit bash
 nmap :W :w
 nmap :Tab :s/\t/    /g
 
