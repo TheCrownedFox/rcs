@@ -118,7 +118,7 @@ if [ -n "$SSH_CLIENT" ] ; then
 fi
 
 # colors
-
+TERM=xterm-256color
 
 # set :q to exit terminal window like it quits in vim
 alias :q=exit
