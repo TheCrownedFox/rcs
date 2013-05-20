@@ -140,7 +140,8 @@ set -o vi
 
 # add ~/bin to path variable for my own shell scripts
 PATH=$PATH:/home/austin/bin:/home/austin/android-sdks/tools/:/home/austin/android-sdks/platform-tools/
-
+# add ruby gems to path
+PATH=$PATH:/home/austin/.gem/ruby/2.0.0/bin
 
 
 #------------------------------------------------------------------------------
