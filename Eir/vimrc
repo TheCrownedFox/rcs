@@ -1,19 +1,22 @@
 
-"set colorscheme
-colorscheme molokai
-
 "set the no vi combatible
 set nocompatible
+
+"set syntax
+syntax on
+
+"set colorscheme
+colorscheme molokai
 
 "begin pathogen
 execute pathogen#infect()
 
 "set commande aliases
 ":command Ctermsplit ConquTermSplit bash
-":command Ctermvsplit ConqueTermVSplit bash
+command Ctermvsplit ConqueTermVSplit bash
 ":command W w
 ":command Tab s/\t/    /g
-nmap :Ctermvsplit :ConqueTermVSplit bash
+"nmap :Ctermvsplit :ConqueTermVSplit bash
 nmap :W :w
 nmap :Tab :s/\t/    /g
 
@@ -27,9 +30,7 @@ nnoremap <leader>c :Ctermvsplit<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>s :source $MYVIMRC<cr>
-
-"set syntax
-syntax on
+nnoremap <leader>w <C-w><C-w>
 
 "set tab size to 4
 set tabstop=4
@@ -50,6 +51,9 @@ filetype indent plugin on
 " turn on line numbers
 set number
 
+"set statusline
+set laststatus=2
+set statusline=%t%m
 
 " chage vimdiff colors
 "if &diff
@@ -107,3 +111,4 @@ endfunction
 " remap keys to functions
 nnoremap J :call LazyScrollDown()<cr>
 nnoremap K :call LazyScrollUp()<cr>
+

@@ -118,11 +118,12 @@ if [ -n "$SSH_CLIENT" ] ; then
 fi
 
 # colors
-
+TERM=xterm-256color
 
 # set :q to exit terminal window like it quits in vim
 alias :q=exit
 alias asgard="ssh -o PORT=8081 austin@lightningcougar.dyndns.info"
+alias chromeos="sudo cgpt -i 6 -P 0 -S 1 /dev/sda"
 
 # set aliases for traveling up directories quickly
 alias u='cd ..'
@@ -139,7 +140,8 @@ set -o vi
 
 # add ~/bin to path variable for my own shell scripts
 PATH=$PATH:/home/austin/bin:/home/austin/android-sdks/tools/:/home/austin/android-sdks/platform-tools/
-
+# add ruby gems to path
+PATH=$PATH:/home/austin/.gem/ruby/2.0.0/bin
 
 
 #------------------------------------------------------------------------------

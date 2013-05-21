@@ -1,0 +1,64 @@
+#xterm*background : black
+#xterm*foreground : green
+xterm*cursorColor : purple
+xterm*font : -*-terminus-medium-*-*-*-18-*-*-*-*-*-iso10646-1
+
+#backgrounds DONE
+xterm*foreground: #d0d0d0
+xterm*background: #121212
+
+#black background?
+xterm*color0:   #121212
+#DONE
+xterm*color8:   #5f5f5f
+#DONE
+
+#red
+xterm*color1:   #d7005f
+#DONE
+#red bold
+xterm*color9:   #d7005f
+#DONE
+
+#green
+xterm*color2:   #87ff00
+#DONE
+#green bold
+xterm*color10:  #87ff00
+#DONE
+
+#yellow
+xterm*color3:   #ff8700
+#DONE
+#yellow bold
+xterm*color11:  #ff8700
+#DONE
+
+#blue
+xterm*color4:   #0087ff
+#DONE
+#blue bold
+xterm*color12:  #0087ff
+#DONE
+
+#purple
+xterm*color5:   #9a31f1
+#DOne
+#purple bold
+xterm*color13:  #9a31f1
+
+#cyan
+xterm*color6:   #5fd7ff
+#DONE
+#cyan bold
+xterm*color14:  #5fd7ff
+
+#white
+xterm*color7:   #d0d0d0
+#DONE
+xterm*color15:  #f8f8f2
+
+#grey
+xterm*color8:   #5f5f5f
+#DONE
+xterm*color16:  #000000
