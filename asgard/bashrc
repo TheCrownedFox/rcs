@@ -119,6 +119,9 @@ if [ -n "$SSH_CLIENT" ] ; then
     export PS1='\[\e[0;31m\]\u@\h:\w\$\[\e[m\] '
 fi
 
+# force 256 color terminal
+TERM=xterm-256color
+
 # set :q to exit terminal window like it quits in vim
 alias :q=exit
 
