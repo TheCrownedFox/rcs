@@ -15,10 +15,15 @@ execute pathogen#infect()
 :command W w
 :command Tab s/\t/    /g
 
+
 " set leader key to \
 let mapleader = "\\"
 
 "nunmap <leader>s
+
+"let @a=':s/<\/p>\n/ /g:s/<p class="calibre2">//g^i<p class="calibre2">$A</p>'
+let @a=':s/<\/p>\n/ /g:s/<p class="calibre2">//g^i<p class="calibre2">$A</p>o'
+
 
 "set leader key mappings
 nnoremap <leader>c :Ctermvsplit<cr>
