@@ -1,9 +1,12 @@
 
-"set colorscheme
-colorscheme molokai
-
 "set the no vi combatible
 set nocompatible
+
+"set syntax
+syntax on
+
+"set colorscheme
+colorscheme molokai
 
 "begin pathogen
 execute pathogen#infect()
@@ -30,16 +33,14 @@ nnoremap <leader>c :Ctermvsplit<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>s :source $MYVIMRC<cr>
-
-"set syntax
-syntax on
+nnoremap <leader>w <C-w><C-w>
 
 "set tab size to 4
 set tabstop=4
 set ts=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab
+"set expandtab
 "set smarttab
 set smartindent
 
@@ -53,6 +54,9 @@ filetype indent plugin on
 " turn on line numbers
 set number
 
+"set statusline
+set laststatus=2
+set statusline=%t%m%=%c,%l/%L
 
 " chage vimdiff colors
 "if &diff
