@@ -37,7 +37,7 @@ set tabstop=4
 set ts=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab
+"set expandtab
 "set smarttab
 set smartindent
 
@@ -53,7 +53,7 @@ set number
 
 "set statusline
 set laststatus=2
-set statusline=%t%m
+set statusline=%t%m%=%c,%l/%L
 
 " chage vimdiff colors
 "if &diff
