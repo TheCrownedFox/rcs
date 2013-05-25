@@ -113,6 +113,10 @@ fi
 
 # set TERM env variable to 256 colors
 TERM=xterm-256color
+
+# set ECLIPSE-HOME env variable to point to ~/opt/
+ECLIPSE_HOME=/home/austin/opt
+
 # set a different prompt if logged in via ssh
 # currently switches color to red
 if [ -n "$SSH_CLIENT" ] ; then
