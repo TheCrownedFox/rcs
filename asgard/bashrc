@@ -113,6 +113,10 @@ fi
 
 # set TERM env variable to 256 colors
 TERM=xterm-256color
+
+# set ECLIPSE-HOME env variable to point to ~/opt/
+ECLIPSE_HOME=/home/austin/opt
+
 # set a different prompt if logged in via ssh
 # currently switches color to red
 if [ -n "$SSH_CLIENT" ] ; then
@@ -124,6 +128,7 @@ TERM=xterm-256color
 
 # set :q to exit terminal window like it quits in vim
 alias :q=exit
+alias git-diff="git difftool --tool=vimdiff "
 
 # set aliases for traveling up directories quickly
 alias u='cd ..'
@@ -134,6 +139,9 @@ alias uuuuu='cd ../../../../..'
 alias uuuuuu='cd ../../../../../..'
 alias uuuuuuu='cd ../../../../../../..'
 alias uuuuuuuu='cd ../../../../../../../..'
+alias uuuuuuuuu='cd ../../../../../../../../..'
+alias uuuuuuuuuu='cd ../../../../../../../../../..'
+alias uuuuuuuuuuu='cd ../../../../../../../../../../..'
 
 # set vi mode
 set -o vi

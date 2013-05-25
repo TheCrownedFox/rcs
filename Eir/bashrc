@@ -135,6 +135,9 @@ alias uuuuu='cd ../../../../..'
 alias uuuuuu='cd ../../../../../..'
 alias uuuuuuu='cd ../../../../../../..'
 alias uuuuuuuu='cd ../../../../../../../..'
+alias uuuuuuuuu='cd ../../../../../../../../..'
+alias uuuuuuuuuu='cd ../../../../../../../../../..'
+alias uuuuuuuuuuu='cd ../../../../../../../../../../..'
 
 # set vi mode
 set -o vi
