@@ -56,7 +56,7 @@ set number
 
 "set statusline
 set laststatus=2
-set statusline=%t%m%=%c,%l/%L
+set statusline=%t%m%=%c::%l/%L
 
 " chage vimdiff colors
 "if &diff
