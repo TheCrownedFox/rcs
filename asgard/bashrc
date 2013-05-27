@@ -115,7 +115,7 @@ fi
 TERM=xterm-256color
 
 # set ECLIPSE-HOME env variable to point to ~/opt/
-ECLIPSE_HOME=/home/austin/opt
+ECLIPSE_HOME=/home/austin/opt/eclipse
 
 # set a different prompt if logged in via ssh
 # currently switches color to red
@@ -129,6 +129,8 @@ TERM=xterm-256color
 # set :q to exit terminal window like it quits in vim
 alias :q=exit
 alias git-diff="git difftool --tool=vimdiff "
+alias eclimd="$ECLIPSE_HOME/eclimd"
+alias eclim-down="$ECLIPSE_HOME/eclim -command shutdown"
 
 # set aliases for traveling up directories quickly
 alias u='cd ..'
