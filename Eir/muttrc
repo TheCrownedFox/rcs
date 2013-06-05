@@ -1,0 +1,12 @@
+set from = "austin.diviness@gmail.com"
+set realname = "Austin Diviness"
+set imap_user = "austin.diviness@gmail.com"
+set folder = "imaps://austin.diviness@imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed ="+[Gmail]/Drafts"
+#set trash = "imaps://imap.gmail.com/[Gmail]/Trash"
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
+set smtp_url = "smtp://austin.diviness@smtp.gmail.com:587/"
+
