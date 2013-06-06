@@ -33,7 +33,20 @@ nnoremap <leader>c :Ctermvsplit<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>s :source $MYVIMRC<cr>
-nnoremap <leader>w <C-w><C-w>
+nnoremap <leader>w <C-w>w
+
+
+" some eclim mappings TODO need to come up with a better way to do this
+" starts eclim service crap
+nnoremap <leader>e :PingEclim<cr>
+" opens project tree
+nnoremap <leader>t :ProjectTree 
+" some java specific mappings
+au FileType java nnoremap <buffer> <leader>o :JavaImport<cr>
+au FileType java nnoremap <buffer> <leader>O :JavaImportOrganize<cr>
+au FileType java nnoremap <buffer> <leader>a :JavaCorrect<cr>
+au FileType java nnoremap <buffer> <leader>i :JavaImpl<cr>
+
 
 "set tab size to 4
 set tabstop=4
