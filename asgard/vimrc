@@ -12,11 +12,11 @@ colorscheme molokai
 execute pathogen#infect()
 
 "set commande aliases
-:command Cterm ConqueTerm bash
-:command Ctermsplit ConquTermSplit bash
-:command Ctermvsplit ConqueTermVSplit bash
-:command W w
-:command Tab s/\t/    /g
+:command! Cterm ConqueTerm bash
+:command! Ctermsplit ConquTermSplit bash
+:command! Ctermvsplit ConqueTermVSplit bash
+:command! W w
+:command! Tab s/\t/    /g
 
 
 " set leader key to \
@@ -33,7 +33,7 @@ nnoremap <leader>c :Ctermvsplit<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>s :source $MYVIMRC<cr>
-nnoremap <leader>w <C-w>w
+nnoremap <leader>w <C-w>w:
 
 
 " some eclim mappings TODO need to come up with a better way to do this
@@ -89,9 +89,15 @@ set nofoldenable
 au BufWinLeave * silent! mkview
 au BufWinenter * silent! loadview
 
+" toggle line numbering type depending on mode
+au InsertEnter ':call ToggleNumbering()'
+au InsertLeave ':call ToggleNumbering()'
+
+" TODO make sure that vim opens in relative numbering mode
+
 
 "function to scroll down
-function LazyScrollDown()
+function! LazyScrollDown()
     let botLine = line("$")
     if getpos('.')[1] == botLine
         echom "Already at bottom!"
@@ -108,7 +114,7 @@ function LazyScrollDown()
 endfunction
 
 "function to scroll up
-function LazyScrollUp()
+function! LazyScrollUp()
     let topLine = 1
     if getpos('.')[1] == topLine
         echom "Already at top!"
@@ -124,6 +130,15 @@ function LazyScrollUp()
     endwhile
 endfunction
 
+"toggle absolute/relative line numbering
+function! ToggleNumbering()
+    if(&relativenumber == 1)
+        set number
+    else
+        set relativenumber
+    endif
+endfunction
+
 " remap keys to functions
 nnoremap J :call LazyScrollDown()<cr>
-nnoremap K :call LazyScrollUp()<cr>
+noremap K :call LazyScrollUp()<cr>
