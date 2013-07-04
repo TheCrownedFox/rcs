@@ -1,0 +1,14 @@
+source ~/.mutt/colors
+set realname = "Austin Diviness"
+#set trash = "imaps://imap.gmail.com/[Gmail]/Trash"
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
+macro index <f1> "<sync-mailbox><enter-command> source ~/rcs/Eir/muttPersonalrc<enter><change-folder>!<enter>"
+macro index <f2> "<sync-mailbox><enter-command> source ~/rcs/Eir/muttSchoolrc<enter><change-folder>!<enter>"
+# Account 1
+folder-hook "personal" "source ~/rcs/Eir/muttPersonalrc"
+# Account 2
+folder-hook "school" "source ~/rcs/Eir/muttSchoolrc"
+# set default
+source ~/rcs/Eir/muttPersonalrc

@@ -1,0 +1,6 @@
+set from = "austin.diviness@gmail.com"
+set imap_user = "austin.diviness@gmail.com"
+set folder = "imaps://austin.diviness@imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed ="+[Gmail]/Drafts"
+set smtp_url = "smtp://austin.diviness@smtp.gmail.com:587/"

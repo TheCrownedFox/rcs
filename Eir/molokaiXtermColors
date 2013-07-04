@@ -2,6 +2,7 @@
 #xterm*foreground : green
 xterm*cursorColor : purple
 xterm*font : -*-terminus-medium-*-*-*-18-*-*-*-*-*-iso10646-1
+#xterm*font : -*-terminus-medium-*-*-*-32-*-*-*-*-*-iso10646-1
 
 #backgrounds DONE
 xterm*foreground: #d0d0d0
