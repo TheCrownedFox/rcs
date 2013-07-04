@@ -57,6 +57,11 @@ set shiftwidth=4
 "set smarttab
 set smartindent
 
+" if ruby related files, set tab to 2
+au FileType ruby set tabstop=2
+au FileType ruby set ts=2
+au FileType ruby set softtabstop=2
+au FileType ruby set shiftwidth=2
 
 " auto indent
 set autoindent
