@@ -95,10 +95,11 @@ au BufWinLeave * silent! mkview
 au BufWinenter * silent! loadview
 
 " toggle line numbering type depending on mode
-au InsertEnter ':call ToggleNumbering()'
-au InsertLeave ':call ToggleNumbering()'
+au InsertEnter * call ToggleNumbering()
+au InsertLeave * call ToggleNumbering()
 
-" TODO make sure that vim opens in relative numbering mode
+" make sure that vim opens in relative numbering mode
+set relativenumber
 
 
 "function to scroll down
