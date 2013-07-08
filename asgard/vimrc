@@ -98,12 +98,23 @@ set nofoldenable
 au BufWinLeave * silent! mkview
 au BufWinenter * silent! loadview
 
-" toggle line numbering type depending on mode
-au InsertEnter * call ToggleNumbering()
-au InsertLeave * call ToggleNumbering()
 
 " make sure that vim opens in relative numbering mode
-set relativenumber
+" only on versions that support it
+if version >= 703
+    set relativenumber
+    " toggle line numbering type depending on mode
+    au InsertEnter * call ToggleNumbering()
+    au InsertLeave * call ToggleNumbering()
+    "toggle absolute/relative line numbering
+    function! ToggleNumbering()
+        if(&relativenumber == 1)
+            set number
+        else
+            set relativenumber
+        endif
+    endfunction
+endif
 
 
 
@@ -134,13 +145,4 @@ function! LazyScroll(direction)
 			let moveCount -= 1
 		endwhile
 	endif
-endfunction
-
-"toggle absolute/relative line numbering
-function! ToggleNumbering()
-    if(&relativenumber == 1)
-        set number
-    else
-        set relativenumber
-    endif
 endfunction
