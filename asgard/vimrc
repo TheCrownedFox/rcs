@@ -33,7 +33,11 @@ nnoremap <leader>c :Ctermvsplit<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>s :source $MYVIMRC<cr>
-nnoremap <leader>w <C-w>w:
+nnoremap <leader>w <C-w>w
+
+" remap keys to functions
+nnoremap J :call LazyScroll("down")<cr>
+nnoremap K :call LazyScroll("up")<cr>
 
 
 " some eclim mappings TODO need to come up with a better way to do this
@@ -102,38 +106,34 @@ au InsertLeave * call ToggleNumbering()
 set relativenumber
 
 
-"function to scroll down
-function! LazyScrollDown()
-    let botLine = line("$")
-    if getpos('.')[1] == botLine
-        echom "Already at bottom!"
-        return
-    endif
-    let c = winheight(0) - 5
-    normal! L
-    while c > 0 && getpos('.')[1] != botLine
-        normal! j
-        redraw
-        sleep 20m
-        let c -= 1
-    endwhile
-endfunction
 
-"function to scroll up
-function! LazyScrollUp()
-    let topLine = 1
-    if getpos('.')[1] == topLine
-        echom "Already at top!"
-        return
-    endif
-    let c = winheight(0) - 5
-    normal! H
-    while c > 0 && getpos('.')[1] != topLine
-        normal! k
-        redraw
-        sleep 20m
-        let c -= 1
-    endwhile
+"function to scroll up or down
+function! LazyScroll(direction)
+	let overlapLineNum = 2
+	normal! H
+	let topLine = line('.')
+	normal L!
+	let botLine = line('.')
+	let moveCount = botLine - topLine - overlapLineNum
+	if a:direction ==? "up"
+		let topLine = 1
+		normal! H
+		while moveCount > 0 && getpos('.')[1] != topLine
+			normal! k
+			redraw
+			sleep 20m
+			let moveCount -= 1
+		endwhile
+	elseif a:direction ==? "down"
+		let botLine = line('$')
+		normal! L
+		while moveCount > 0 && getpos('.')[1] != botLine
+			normal! j
+			redraw
+			sleep 20m
+			let moveCount -= 1
+		endwhile
+	endif
 endfunction
 
 "toggle absolute/relative line numbering
@@ -144,7 +144,3 @@ function! ToggleNumbering()
         set relativenumber
     endif
 endfunction
-
-" remap keys to functions
-nnoremap J :call LazyScrollDown()<cr>
-noremap K :call LazyScrollUp()<cr>
