@@ -120,29 +120,35 @@ endif
 
 "function to scroll up or down
 function! LazyScroll(direction)
-	let overlapLineNum = 2
-	normal! H
-	let topLine = line('.')
-	normal L!
-	let botLine = line('.')
-	let moveCount = botLine - topLine - overlapLineNum
-	if a:direction ==? "up"
-		let topLine = 1
-		normal! H
-		while moveCount > 0 && getpos('.')[1] != topLine
-			normal! k
-			redraw
-			sleep 20m
-			let moveCount -= 1
-		endwhile
-	elseif a:direction ==? "down"
-		let botLine = line('$')
-		normal! L
-		while moveCount > 0 && getpos('.')[1] != botLine
-			normal! j
-			redraw
-			sleep 20m
-			let moveCount -= 1
-		endwhile
-	endif
+    if a:direction == 'up' && line('.') == 1
+        echom "Already at top!"
+    elseif a:direction == 'down' && line('.') == line('$')
+        echom "Already at bottom!"
+    else
+        let overlapLineNum = 2
+        normal! H
+        let topLine = line('.')
+        normal L!
+        let botLine = line('.')
+        let moveCount = botLine - topLine - overlapLineNum
+        if a:direction ==? "up"
+            let topLine = 1
+            normal! H
+            while moveCount > 0 && getpos('.')[1] != topLine
+                normal! k
+                redraw
+                sleep 20m
+                let moveCount -= 1
+            endwhile
+        elseif a:direction ==? "down"
+            let botLine = line('$')
+            normal! L
+            while moveCount > 0 && getpos('.')[1] != botLine
+                normal! j
+                redraw
+                sleep 20m
+                let moveCount -= 1
+            endwhile
+        endif
+    endif
 endfunction
