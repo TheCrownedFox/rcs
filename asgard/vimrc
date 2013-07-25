@@ -36,8 +36,8 @@ nnoremap <leader>s :source $MYVIMRC<cr>
 nnoremap <leader>w <C-w>w
 
 " remap keys to functions
-nnoremap J :call LazyScroll("down")<cr>
-nnoremap K :call LazyScroll("up")<cr>
+"nnoremap J :call LazyScroll("down")<cr>
+"nnoremap K :call LazyScroll("up")<cr>
 
 
 " some eclim mappings TODO need to come up with a better way to do this
@@ -92,6 +92,7 @@ set statusline=%t%m%=%c::%l/%L
 set foldmethod=indent
 "set foldnestmax=2
 set nofoldenable
+"set foldcolumn=10
 
 
 " save foldings
@@ -120,34 +121,34 @@ endif
 
 "function to scroll up or down
 function! LazyScroll(direction)
-    if a:direction == 'up' && line('.') == 1
+    let topLine = 1
+    let botLine = line('$')
+    if a:direction == 'up' && line('.') == topLine
         echom "Already at top!"
-    elseif a:direction == 'down' && line('.') == line('$')
+    elseif a:direction == 'down' && line('.') == botLine
         echom "Already at bottom!"
     else
         let overlapLineNum = 2
         normal! H
-        let topLine = line('.')
+        let topLineVisible = line('.')
         normal L!
-        let botLine = line('.')
-        let moveCount = botLine - topLine - overlapLineNum
+        let botLineVisible = line('.')
+        let moveCountdown = botLineVisible - topLineVisible - overlapLineNum
         if a:direction ==? "up"
-            let topLine = 1
             normal! H
-            while moveCount > 0 && getpos('.')[1] != topLine
+            while moveCountdown > 0 && line('.') != topLine
                 normal! k
                 redraw
                 sleep 20m
-                let moveCount -= 1
+                let moveCountdown -= 1
             endwhile
         elseif a:direction ==? "down"
-            let botLine = line('$')
             normal! L
-            while moveCount > 0 && getpos('.')[1] != botLine
+            while moveCountdown > 0 && line('.') != botLine
                 normal! j
                 redraw
                 sleep 20m
-                let moveCount -= 1
+                let moveCountdown -= 1
             endwhile
         endif
     endif
