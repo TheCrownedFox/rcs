@@ -36,8 +36,8 @@ nnoremap <leader>s :source $MYVIMRC<cr>
 nnoremap <leader>w <C-w>w
 
 " remap keys to functions
-"nnoremap J :call LazyScroll("down")<cr>
-"nnoremap K :call LazyScroll("up")<cr>
+nnoremap <leader>J :call LazyScroll("down")<cr>
+nnoremap <leader>K :call LazyScroll("up")<cr>
 
 
 " some eclim mappings TODO need to come up with a better way to do this
@@ -128,7 +128,7 @@ function! LazyScroll(direction)
     elseif a:direction == 'down' && line('.') == botLine
         echom "Already at bottom!"
     else
-        let overlapLineNum = 2
+        let overlapLineNum = 4
         normal! H
         let topLineVisible = line('.')
         normal L!
@@ -151,5 +151,8 @@ function! LazyScroll(direction)
                 let moveCountdown -= 1
             endwhile
         endif
+        " at this point, check if the line the cursor was one before
+        " the move is still on the screen. if it is, move cursor
+        " there
     endif
 endfunction
