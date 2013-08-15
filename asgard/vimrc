@@ -1,17 +1,31 @@
 
+"General options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "set the no vi combatible
 set nocompatible
 
 "set syntax
 syntax on
 
-"set colorscheme
-colorscheme molokai
+" turn on line numbers
+set number
+
+"set statusline
+set laststatus=2
+set statusline=%t%m%=%c::%l/%L
+
+"show commands in bottom right
+set showcmd
 
 "begin pathogen
 execute pathogen#infect()
 
-"set commande aliases
+
+"Key mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"set command aliases
 :command! Cterm ConqueTerm bash
 :command! Ctermsplit ConquTermSplit bash
 :command! Ctermvsplit ConqueTermVSplit bash
@@ -19,12 +33,9 @@ execute pathogen#infect()
 :command! Tab s/\t/    /g
 
 
-" set leader key to \
+"set leader key to \
 let mapleader = "\\"
 
-"nunmap <leader>s
-
-"let @a=':s/<\/p>\n/ /g:s/<p class="calibre2">//g^i<p class="calibre2">$A</p>'
 let @a=':s/<\/p>\n/ /g:s/<p class="calibre2">//g^i<p class="calibre2">$A</p>o'
 
 
@@ -35,22 +46,24 @@ nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>s :source $MYVIMRC<cr>
 nnoremap <leader>w <C-w>w
 
-" remap keys to functions
+"remap functions to keys 
 nnoremap <leader>J :call LazyScroll("down")<cr>
 nnoremap <leader>K :call LazyScroll("up")<cr>
 
 
-" some eclim mappings TODO need to come up with a better way to do this
-" starts eclim service crap
+"some eclim mappings TODO need to come up with a better way to do this
+"starts eclim service crap
 nnoremap <leader>e :PingEclim<cr>
-" opens project tree
+"opens project tree
 nnoremap <leader>t :ProjectTree 
-" some java specific mappings
+"some java specific mappings
 au FileType java nnoremap <buffer> <leader>o :JavaImport<cr>
 au FileType java nnoremap <buffer> <leader>O :JavaImportOrganize<cr>
 au FileType java nnoremap <buffer> <leader>a :JavaCorrect<cr>
 au FileType java nnoremap <buffer> <leader>i :JavaImpl<cr>
 
+"Indentation and tabs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "set tab size to 4
 set tabstop=4
@@ -61,7 +74,9 @@ set expandtab
 "set smarttab
 set smartindent
 
-" if ruby related files, set tab to 2
+
+"if ruby related files, set tab to 2
+"TODO find a better way to do this, for multiple file types
 au FileType ruby set tabstop=2
 au FileType ruby set ts=2
 au FileType ruby set softtabstop=2
@@ -73,51 +88,46 @@ set autoindent
 " This is for filetype specific behavior (i.e. python is different than c++)
 filetype indent plugin on
 
-" turn on line numbers
-set number
 
-"set statusline
-set laststatus=2
-set statusline=%t%m%=%c::%l/%L
+"Colors
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" chage vimdiff colors
+"set colorscheme
+colorscheme molokai
+
+"chage vimdiff colors
 "if &diff
     highlight DiffAdd ctermbg=red ctermfg=black
     highlight DiffChange ctermbg=red ctermfg=black
     highlight DiffDelete ctermbg=red ctermfg=black
 "endif
     
+"Folding
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" set folding
+"set folding
 set foldmethod=indent
 "set foldnestmax=2
 set nofoldenable
 "set foldcolumn=10
 
 
-" save foldings
+"save foldings
 au BufWinLeave * silent! mkview
 au BufWinenter * silent! loadview
 
 
-" make sure that vim opens in relative numbering mode
-" only on versions that support it
+"make sure that vim opens in relative numbering mode
+"only on versions that support it
 if version >= 703
     set relativenumber
     " toggle line numbering type depending on mode
     au InsertEnter * call ToggleNumbering()
     au InsertLeave * call ToggleNumbering()
-    "toggle absolute/relative line numbering
-    function! ToggleNumbering()
-        if(&relativenumber == 1)
-            set number
-        else
-            set relativenumber
-        endif
-    endfunction
 endif
 
-
+"define functions here
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "function to scroll up or down
 function! LazyScroll(direction)
@@ -151,8 +161,18 @@ function! LazyScroll(direction)
                 let moveCountdown -= 1
             endwhile
         endif
+        " TODO
         " at this point, check if the line the cursor was one before
         " the move is still on the screen. if it is, move cursor
         " there
+    endif
+endfunction
+
+"toggle absolute/relative line numbering
+function! ToggleNumbering()
+    if(&relativenumber == 1)
+        set number
+    else
+        set relativenumber
     endif
 endfunction
