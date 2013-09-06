@@ -102,6 +102,16 @@ colorscheme molokai
     highlight DiffDelete ctermbg=red ctermfg=black
 "endif
     
+"turn on rainbow parentheses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+"turn off cursor matching parentheses
+hi clear MatchParen
+hi MatchParen term=underline cterm=underline,bold gui=underline,bold
+
 "Folding
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -117,14 +127,16 @@ au BufWinLeave * silent! mkview
 au BufWinenter * silent! loadview
 
 
+"Line Numbers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "make sure that vim opens in relative numbering mode
 "only on versions that support it
-if version >= 703
-    set relativenumber
-    " toggle line numbering type depending on mode
-    au InsertEnter * call ToggleNumbering()
-    au InsertLeave * call ToggleNumbering()
-endif
+"if version >= 703
+"    set relativenumber
+"    " toggle line numbering type depending on mode
+"    au InsertEnter * call ToggleNumbering()
+"    au InsertLeave * call ToggleNumbering()
+"endif
 
 "define functions here
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

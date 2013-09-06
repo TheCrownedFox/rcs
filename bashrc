@@ -128,6 +128,8 @@ TERM=xterm-256color
 
 # set :q to exit terminal window like it quits in vim
 alias :q=exit
+alias asgard="ssh -o PORT=8081 austin@lightningcougar.dyndns.info"
+alias chromeos="sudo cgpt -i 6 -P 0 -S 1 /dev/sda"
 alias git-diff="git difftool --tool=vimdiff "
 alias eclimd="$ECLIPSE_HOME/eclimd"
 alias eclim-down="$ECLIPSE_HOME/eclim -command shutdown"
