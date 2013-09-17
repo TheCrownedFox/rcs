@@ -49,7 +49,8 @@ nnoremap <leader>w <C-w>w
 "remap functions to keys 
 nnoremap <leader>J :call LazyScroll("down")<cr>
 nnoremap <leader>K :call LazyScroll("up")<cr>
-
+nnoremap <leader>r :call ToggleNumbering()<cr>
+"au InsertLeave * call NoCapsLock()<cr>
 
 "some eclim mappings TODO need to come up with a better way to do this
 "starts eclim service crap
@@ -176,8 +177,7 @@ function! LazyScroll(direction)
         " TODO
         " at this point, check if the line the cursor was one before
         " the move is still on the screen. if it is, move cursor
-        " there
-    endif
+        " there endif
 endfunction
 
 "toggle absolute/relative line numbering
@@ -188,3 +188,9 @@ function! ToggleNumbering()
         set relativenumber
     endif
 endfunction
+
+"turn off caps lock
+function! NoCapsLock()
+    echo system("python2 ", 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)')
+endfunction
+
