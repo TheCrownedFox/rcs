@@ -7,6 +7,8 @@ static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
 static const char selbordercolor[]  = "#005577";
 static const char selbgcolor[]      = "#005577";
+// color to use for low battery
+static const char lowselbgcolor[]   = "#c91a1a";
 static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -20,6 +22,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
+	{ "Chromium", NULL,       NULL,       1 << 1,       False,       -1 },
 };
 
 /* layout(s) */
@@ -47,11 +50,11 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "uxterm", NULL };
+static const char *termcmd[]  = { "xterm", NULL };
 //static const char* raiseBright[] = { "sudo", "setBright", "inc", "10", NULL};
 //static const char* lowerBright[] = { "sudo", "setBright", "dec", "10", NULL};
-static const char* raiseBright[] = { "setBright", "inc", "10", NULL};
-static const char* lowerBright[] = { "setBright", "dec", "10", NULL};
+static const char* raiseBright[] = { "setBright", "inc", "110", NULL};
+static const char* lowerBright[] = { "setBright", "dec", "110", NULL};
 static const char* toggleTouch[] = { "toggleMouse", NULL};
 
 static Key keys[] = {
