@@ -22,4 +22,4 @@
 (setq scroll-step		1
       scroll-conservatively	10000)
 
-(normal-erase-is-backspace-mode 1)
+;(normal-erase-is-backspace-mode 1)
