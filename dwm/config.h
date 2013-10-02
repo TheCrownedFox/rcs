@@ -23,6 +23,7 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
 	{ "Chromium", NULL,       NULL,       1 << 1,       False,       -1 },
+	{ "Zathura",  NULL,       NULL,       1 << 2,       False,       -1 },
 };
 
 /* layout(s) */
