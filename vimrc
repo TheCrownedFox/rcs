@@ -5,8 +5,15 @@
 "set the no vi combatible
 set nocompatible
 
+"set the shell to bash
+if &shell =~# 'fish$'
+    set shell=bash
+endif
+
 "set syntax
 syntax on
+" TODO what's the difference between the two?
+syntax enable
 
 " turn on line numbers
 set number
@@ -31,6 +38,9 @@ execute pathogen#infect()
 :command! Ctermvsplit ConqueTermVSplit bash
 :command! W w
 :command! Tab s/\t/    /g
+"commands to switch between hex and normal
+command! ToHex %!xxd
+command! FromHex %!xxd -r
 
 
 "set leader key to \
@@ -63,6 +73,11 @@ au FileType java nnoremap <buffer> <leader>O :JavaImportOrganize<cr>
 au FileType java nnoremap <buffer> <leader>a :JavaCorrect<cr>
 au FileType java nnoremap <buffer> <leader>i :JavaImpl<cr>
 
+"Fish specific stuff
+au FileType fish compiler fish
+au FileType fish setlocal textwidth=79
+au FileType fish setlocal foldmethod=expr
+
 "Indentation and tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -71,7 +86,7 @@ set tabstop=4
 set ts=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab
+"set expandtab
 "set smarttab
 set smartindent
 
@@ -178,6 +193,7 @@ function! LazyScroll(direction)
         " at this point, check if the line the cursor was one before
         " the move is still on the screen. if it is, move cursor
         " there endif
+    endif
 endfunction
 
 "toggle absolute/relative line numbering
