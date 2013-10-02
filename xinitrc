@@ -20,8 +20,11 @@ xset -dpms
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
+# load random wallpaper
 randomWallpaper.sh
+# begin running status information
 status-info &
+# apply xmodmap for keys
 xmodmap ~/.Xmodmap
 
 exec dwm
