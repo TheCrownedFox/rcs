@@ -25,7 +25,8 @@ xterm*color11:  #feed6c
 
 #blue
 xterm*color4:   #56c2d6
-xterm*color12:  #8cedff
+#xterm*color12:  #8cedff
+xterm*color12:  #00AFFF
 
 #magenta
 xterm*color5:   #8c54fe
