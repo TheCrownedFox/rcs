@@ -111,9 +111,6 @@ fi
 # THE STUFF THAT I DID!!!
 #
 
-# set TERM env variable to 256 colors
-TERM=xterm-256color
-
 # set ECLIPSE-HOME env variable to point to ~/opt/
 ECLIPSE_HOME=/home/austin/opt/eclipse
 
@@ -155,12 +152,11 @@ set -o vi
 PATH=$PATH:/home/austin/bin:/home/austin/android-sdks/tools/:/home/austin/android-sdks/platform-tools/
 
 # add ruby rvm stuff to PATH
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] & source "$HOME/.rvm/scripts/rvm"
 
-
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
