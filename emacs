@@ -23,3 +23,13 @@
       scroll-conservatively	10000)
 
 ;(normal-erase-is-backspace-mode 1)
+
+(require 'package)
+(add-to-list 'package-archives
+	     '("marmalade" .
+	     		   "http://marmalade-repo.org/packages/"))
+(package-initialize)
+(load-theme 'monokai t)
+
+(setq x-super-keysym 'meta)
+(setq x-meta-keysym 'super)
