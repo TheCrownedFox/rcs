@@ -14,7 +14,7 @@ alias serve_php "php -S 127.0.0.1:3000"
 set TERM xterm-256color
 
 # utility aliases for programs I use
-alias emacs "emacs -nw"
+#alias emacs "emacs -nw"
 # edit todo file
 alias vt "vim ~/Documents/todo.md"
 # edit fish config
@@ -34,3 +34,8 @@ alias uuuu "cd ../../../.."
 alias uuuuu "cd ../../../../.."
 
 # add to path
+
+# sudo !! function
+function sudo!!
+	eval sudo $history[1]
+end
