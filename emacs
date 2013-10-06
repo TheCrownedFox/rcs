@@ -33,3 +33,5 @@
 
 (setq x-super-keysym 'meta)
 (setq x-meta-keysym 'super)
+
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)

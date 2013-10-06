@@ -130,7 +130,7 @@ alias chromeos="sudo cgpt -i 6 -P 0 -S 1 /dev/sda"
 alias git-diff="git difftool --tool=vimdiff "
 alias eclimd="$ECLIPSE_HOME/eclimd"
 alias eclim-down="$ECLIPSE_HOME/eclim -command shutdown"
-alias emacs='emacs -nw'
+#alias emacs='emacs -nw'
 
 # set aliases for traveling up directories quickly
 alias u='cd ..'
