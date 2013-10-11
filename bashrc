@@ -123,6 +123,10 @@ fi
 # force 256 color terminal
 TERM=xterm-256color
 
+# set vim as default editor
+
+EDITOR=/usr/bin/vim
+
 # set :q to exit terminal window like it quits in vim
 alias :q=exit
 alias asgard="ssh -o PORT=8081 austin@lightningcougar.dyndns.info"

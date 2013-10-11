@@ -13,6 +13,9 @@ alias serve_php "php -S 127.0.0.1:3000"
 # set term to be 256 colors
 set TERM xterm-256color
 
+# set vim as default editor
+set EDITOR /usr/bin/vim
+
 # utility aliases for programs I use
 #alias emacs "emacs -nw"
 # edit todo file
