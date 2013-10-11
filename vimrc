@@ -37,6 +37,9 @@ execute pathogen#infect()
 :command! Ctermsplit ConquTermSplit bash
 :command! Ctermvsplit ConqueTermVSplit bash
 :command! W w
+:command! Q q
+:command! Wq wq
+:command! WQ wq
 :command! Tab s/\t/    /g
 "commands to switch between hex and normal
 command! ToHex %!xxd
