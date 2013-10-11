@@ -1,5 +1,6 @@
+set from = "adivines@mymail.mines.edu"
 set imap_user = "adivines@mymail.mines.edu"
 set folder = "imaps://adivines@imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set postponed ="+[Gmail]/Drafts"
-set smtp_url = "smtp://adivines@smtp.gmail.com:587/"
+set smtp_url = "smtp://adivines@smtp.gmail.com:465/"

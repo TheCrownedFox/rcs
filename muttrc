@@ -1,4 +1,5 @@
 source ~/.mutt/colors
+set editor=vim
 set realname = "Austin Diviness"
 #set trash = "imaps://imap.gmail.com/[Gmail]/Trash"
 set header_cache =~/.mutt/cache/headers
