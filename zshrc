@@ -16,6 +16,7 @@ alias asgard="ssh -o PORT=8081 austin@lightningcougar.dyndns.info"
 alias chromeos="sudo cgpt -i 6 -P 0 -S 1 /dev/sda"
 alias git-diff="git difftool --tool=vimdiff"
 alias zrc="source ~/.zshrc"
+alias wifi="sudo wifi-menu mlan0"
 # moving up dirs
 alias u="cd .."
 alias uu="cd ../.."
@@ -57,4 +58,4 @@ unsetopt BEEP
 setopt EXTENDED_GLOB
 
 # change title of terminal emulator on directory change
-chpwd() { print -Pn "\e]2;%~\a" }
+chpwd() { print -Pn "\e]2;zsh %~\a" }

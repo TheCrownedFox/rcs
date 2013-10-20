@@ -40,7 +40,7 @@ execute pathogen#infect()
 :command! Q q
 :command! Wq wq
 :command! WQ wq
-:command! Tab s/\t/    /g
+:command! AllTab %s/\t/    /g
 "commands to switch between hex and normal
 command! ToHex %!xxd
 command! FromHex %!xxd -r
@@ -87,10 +87,11 @@ au FileType fish setlocal foldmethod=expr
 "set tab size to 4
 set tabstop=4
 set ts=4
+set sw=4
 set softtabstop=4
 set shiftwidth=4
-"set expandtab
-"set smarttab
+set expandtab
+set smarttab
 set smartindent
 
 
