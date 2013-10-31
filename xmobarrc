@@ -1,0 +1,13 @@
+Config {
+    font = "-*-fixed-*-*-*-18-*",
+    commands = [
+        Run StdinReader,
+        Run BatteryP ["sbs-4-000b"] 
+                     ["-t", "<left>% <timeleft> <acstatus>", 
+                      "-L", "11", "-l", "red",
+                      "-H", "89", "-h", "green"
+                     ] 300,
+        Run Date "%A, %h %Y %l:%M %p" "date" 400
+    ],
+    template = " %StdinReader% ... }{ %date% | %battery%"
+}
