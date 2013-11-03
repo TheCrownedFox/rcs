@@ -1,5 +1,8 @@
 Config {
     font = "-*-fixed-*-*-*-18-*",
+    lowerOnStart = True,
+    persistent = True,
+    allDesktops = True,
     commands = [
         Run StdinReader,
         Run BatteryP ["sbs-4-000b"] 
@@ -7,7 +10,7 @@ Config {
                       "-L", "11", "-l", "red",
                       "-H", "89", "-h", "green"
                      ] 300,
-        Run Date "%A, %h %Y %l:%M %p" "date" 400
+        Run Date "%A %h %e, %Y %l:%M %p" "date" 400
     ],
     template = " %StdinReader% ... }{ %date% | %battery%"
 }
