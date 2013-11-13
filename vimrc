@@ -54,6 +54,7 @@ let @a=':s/<\/p>\n/ /g:s/<p class="calibre2">//g^i<p class="calibre2">$A</p>
 
 "set leader key mappings
 nnoremap <leader>c :Ctermvsplit<cr>
+nnoremap <leader>C :ConqueTermTab bash<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>s :source $MYVIMRC<cr>
