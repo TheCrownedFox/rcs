@@ -37,7 +37,11 @@ alias uuu "cd ../../.."
 alias uuuu "cd ../../../.."
 alias uuuuu "cd ../../../../.."
 
-# add to path
+# add ~/bin to path variable for my own shell scripts
+set PATH $PATH /home/austin/bin  $HOME/.rvm/bin 
+#/home/austin/android-sdks/tools/ /home/austin/android-sdks/platform-tools/
+
+# add ruby rvm stuff to PATH
 
 # sudo !! function
 function sudo!!
