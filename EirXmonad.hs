@@ -23,7 +23,9 @@ myKeys = [
     ((0, 0x1008FFA9), spawn "toggleMouse"),
     ((0, 0x1008FF03), spawn "setBright dec 110"),
     ((0, 0x1008FF02), spawn "setBright inc 110"),
-    ((mod1Mask, xK_p), spawn "dmenu_run -fn -*-fixed-*-*-*-18-*")
+    ((mod1Mask, xK_p), spawn "dmenu_run -fn -*-fixed-*-*-*-18-*"),
+    ((mod4Mask, xK_F1), spawn "xdotool click 1"),
+    ((mod4Mask, xK_F2), spawn "xdotool click 3")
     ]
 
 myManageHooks = composeAll [
