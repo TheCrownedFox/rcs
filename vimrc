@@ -44,6 +44,7 @@ execute pathogen#infect()
 "commands to switch between hex and normal
 command! ToHex %!xxd
 command! FromHex %!xxd -r
+command! SpellOn setlocal spell spelllang=en_us
 
 
 "set leader key to \
