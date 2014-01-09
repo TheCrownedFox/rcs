@@ -21,7 +21,7 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 
 # load random wallpaper
-randomWallpaper.sh
+~/bin/randomWallpaper.sh
 # begin running status information
 status-info &
 # apply xmodmap for keys
