@@ -48,3 +48,5 @@ set PATH $PATH /home/austin/bin  $HOME/.rvm/bin
 function sudo!!
 	eval sudo $history[1]
 end
+
+source ~/.config.fish/functions.rvm.fish
