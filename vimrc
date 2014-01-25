@@ -28,6 +28,11 @@ set showcmd
 "begin pathogen
 execute pathogen#infect()
 
+"set syntastic to use python3 for checking python files
+if executable("python3") == 1
+    let g:syntastic_python_python_exe = "python3"
+endif
+
 
 "Key mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
