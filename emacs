@@ -43,11 +43,19 @@
 
 ; turn off menu bar
 (menu-bar-mode -1)
+; turn off scroll bars
+(scroll-bar-mode -1)
+; turn off tool bars
+(tool-bar-mode -1)
+
 
 ; auto follow sym links
 (setq vc-follow-symlinks t)
 
-
+; turn on line numbers
+(global-linum-mode t)
+; set spacing for line numbers
+(setq linum-format "%3d ")
 
 
 
