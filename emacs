@@ -1,4 +1,4 @@
-;; .emacs
+; -*- mode: lisp -*-
 
 ;;; uncomment this line to disable loading of "default.el" at startup
 ;; (setq inhibit-default-init t)
@@ -31,7 +31,24 @@
 (package-initialize)
 (load-theme 'monokai t)
 
-(setq x-super-keysym 'meta)
-(setq x-meta-keysym 'super)
+;(setq x-super-keysym 'meta)
+;(setq x-meta-keysym 'super)
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+; turn on evil mode
+(require 'evil)
+(evil-mode 1)
+;(define-key evil-normal-state-map "\mx" 'execute-extended-command)
+
+; turn off menu bar
+(menu-bar-mode -1)
+
+; auto follow sym links
+(setq vc-follow-symlinks t)
+
+
+
+
+
+
