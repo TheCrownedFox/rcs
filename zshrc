@@ -13,10 +13,13 @@ alias vt="vim ~/Documents/todo.md"
 alias todo=vt
 alias rcs="vim ~/rcs"
 alias asgard="ssh -o PORT=8081 austin@lightningcougar.dyndns.info"
+alias imagine="ssh adivines@imagine.mines.edu"
 alias chromeos="sudo cgpt -i 6 -P 0 -S 1 /dev/sda"
 alias git-diff="git difftool --tool=vimdiff"
 alias zrc="source ~/.zshrc"
 alias wifi="sudo wifi-menu mlan0"
+alias takeNote="vim $(date +%d_%m_%Y.md)"
+alias emacs="emacs -nw"
 # moving up dirs
 alias u="cd .."
 alias uu="cd ../.."
@@ -32,6 +35,10 @@ export TZ=America/Denver
 
 # set vi mode
 bindkey -v
+bindkey \^U backward-kill-line
+
+# rvm thing
+[[ -s "$HOME/.rvm/scripts/rvm" ]] &&  . "$HOME/.rvm/scripts/rvm"
 
 # history file stuff
 HISTFILE=~/.zhistory
@@ -45,7 +52,7 @@ setopt HIST_NO_STORE
 
 # set prompt
 autoload -U colors && colors
-PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %n@%m:%{$fg[green]%}%~#%{$reset_color%}%} "
+PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %n@%m:%{$fg[green]%}%~>%{$reset_color%}%} "
 
 # enable autocompletion
 autoload -U compinit

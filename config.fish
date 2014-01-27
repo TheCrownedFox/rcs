@@ -29,6 +29,7 @@ alias asgard "ssh -o PORT=8081 austin@lightningcougar.dyndns.info"
 alias chromeos "sudo cgpt -i 6 -P 0 -S 1 /dev/sda"
 alias git-diff "git difftool --tool=vimdiff"
 alias wifi "sudo wifi-menu mlan0"
+alias takeNote "vim (date +%d_%m_%Y.md)"
 
 # moving up dirs
 alias u "cd .."
@@ -47,3 +48,5 @@ set PATH $PATH /home/austin/bin  $HOME/.rvm/bin
 function sudo!!
 	eval sudo $history[1]
 end
+
+source ~/.config.fish/functions.rvm.fish
