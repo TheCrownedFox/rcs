@@ -57,6 +57,8 @@
 ; set spacing for line numbers
 (setq linum-format "%3d ")
 
+;set background to black
+(add-to-list 'default-frame-alist '(background-color . "#000000"))
 
-
-
+; turn off annoying *~ files
+(setq make-backup-files nil)
