@@ -1,5 +1,11 @@
 ; -*- mode: lisp -*-
 
+(defun find-user-init-file ()
+  "Open init file in another window"
+  (interactive)
+  (split-window-horizontally)
+  (find-file user-init-file))
+
 ;;; uncomment this line to disable loading of "default.el" at startup
 ;; (setq inhibit-default-init t)
 
@@ -53,7 +59,7 @@
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(add-to-list 'load-path "~/.emacs.d/my-plugins/evil-leader")
+(add-to-list 'load-path "~/.emacs.d/my-plugins/evil-leader/")
 (require 'evil-leader)
 (global-evil-leader-mode)
 (evil-leader/set-key
@@ -61,6 +67,7 @@
   "mx" 'execute-extended-command
   "w" 'evil-window-next
   "f" 'other-frame
+  "v" 'find-user-init-file
   )
 
 
@@ -89,7 +96,7 @@
  '(default ((t (:background "nil")))))
 
 
-(add-to-list 'load-path "~/.emacs.d/elpa/enhanced-ruby-mode")
+(add-to-list 'load-path "~/.emacs.d/my-plugins/enhanced-ruby-mode")
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
