@@ -16,6 +16,9 @@ setterm -blank 0 -powersave off -powerdown 0
 xset s off
 xset -dpms
 
+# source Xresources
+xrdb -merge ~/.Xresources
+
 # add extra fonts to X
 xset +fp /usr/share/fonts/local
 xset fp rehash
