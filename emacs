@@ -66,7 +66,8 @@
   "\\" 'evil-execute-in-emacs-state
   "mx" 'execute-extended-command
   "w" 'evil-window-next
-  "f" 'other-frame
+  "t" 'other-frame
+  "f" 'make-frame-command
   "v" 'find-user-init-file
   )
 
