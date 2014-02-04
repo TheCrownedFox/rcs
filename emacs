@@ -87,7 +87,7 @@
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
-      `((".*" . ,temporary-file-directory)))
+      `((".*" ,temporary-file-directory t)))
 
 
 (custom-set-variables
@@ -113,9 +113,9 @@
 
 (setq font-lock-maximum-decoration t)
 
-;(add-to-list 'load-path "~/.emacs.d/my-plugins/xah-css-mode")
-;(autoload 'xah-css-mode "xah-css-mode" "Major mode for css files" t)
-;(add-to-list 'auto-mode-alist '("\\.scss$" . xah-css-mode)
-
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.erb" . web-mode))
+
+; auto start rainbow-mode when editing scss files
+;(add-to-list 'auto-mode-alist '("\\.scss$" . rainbow-mode))
+
