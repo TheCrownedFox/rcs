@@ -21,7 +21,8 @@
 xterm*font : -*-fixed-*-*-*-18-*
 
 *.foreground:   base05
-*.background:   base00
+!*.background:   base00
+*.background:   #121212
 !*.cursorColor:  base05
 *.cursorColor : purple
 *.color0:       base00
