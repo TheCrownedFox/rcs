@@ -10,6 +10,7 @@ main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ defaultConfig {
         workspaces = myWorkspaces,
+	modMask = mod4Mask,
         manageHook = myManageHooks <+> manageHook defaultConfig,
         layoutHook = avoidStruts $ myLayouts,
         handleEventHook = docksEventHook,

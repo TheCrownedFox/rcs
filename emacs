@@ -60,7 +60,7 @@
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(add-to-list 'load-path "~/.emacs.d/my-plugins/evil-leader/")
+(add-to-list 'load-path "~/.emacs.d/git-plugins/evil-leader/")
 (require 'evil-leader)
 (global-evil-leader-mode)
 (evil-leader/set-key
@@ -73,7 +73,7 @@
   )
 
 ; eshell aliases
-(defalias 'vs 'vil-window-vsplit)
+(defalias 'vs 'evil-window-vsplit)
 
 ; auto follow sym links
 (setq vc-follow-symlinks t)
@@ -89,7 +89,7 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-(add-to-list 'load-path "~/.emacs.d/my-plugins/enhanced-ruby-mode")
+(add-to-list 'load-path "~/.emacs.d/git-plugins/enhanced-ruby-mode")
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
