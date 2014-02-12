@@ -34,7 +34,8 @@ myKeys = [
 
 myManageHooks = composeAll [
     className =? "Zathura" --> doShift "3",
-    className =? "Chromium" --> doShift "2"
+    className =? "Chromium" --> doShift "2",
+    className =? "LibreOffice" --> doShift "4"
     ]
 
 myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
