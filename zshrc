@@ -53,8 +53,22 @@ setopt HIST_NO_STORE
 setopt NO_HIST_BEEP
 
 # set prompt
+customDirPath() {
+    if [[ $PWD == '/' ]]; then
+        echo -n '/'
+    else
+        directories=($(echo $PWD | tr '/' ' '))
+        newPath=''
+        for d in $directories; do
+            newPath=${newPath}/${d:0:1}
+        done
+        echo -n $newPath
+    fi
+}
+
 autoload -U colors && colors
-PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %n@%m:%{$fg[green]%}%~>%{$reset_color%}%} "
+setopt PROMPT_SUBST
+PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %n@%m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} "
 
 # enable autocompletion
 autoload -U compinit
@@ -67,4 +81,8 @@ unsetopt BEEP
 setopt EXTENDED_GLOB
 
 # change title of terminal emulator on directory change
-chpwd() { print -Pn "\e]2;zsh %~\a" }
+chpwd() { 
+    print -Pn "\e]2;zsh %~\a"
+    PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %n@%m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} "
+}
+
