@@ -158,6 +158,9 @@ PATH=$PATH:/home/austin/bin:/home/austin/android-sdks/tools/:/home/austin/androi
 # add ruby rvm stuff to PATH
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
+# add dmd to PATH
+PATH=$PATH:$HOME/opt/dmd2/linux/bin64
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] & source "$HOME/.rvm/scripts/rvm"
 
 #------------------------------------------------------------------------------

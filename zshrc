@@ -1,3 +1,4 @@
+#!/bin/zsh
 
 # some common aliases
 alias ls="ls --color=auto"
@@ -20,6 +21,7 @@ alias zrc="source ~/.zshrc"
 alias wifi="sudo wifi-menu mlan0"
 alias takeNote="vim $(date +%d_%m_%Y.md)"
 alias emacs="emacs -nw"
+alias ecc="emacsclient"
 # moving up dirs
 alias u="cd .."
 alias uu="cd ../.."
@@ -42,13 +44,13 @@ bindkey \^U backward-kill-line
 
 # history file stuff
 HISTFILE=~/.zhistory
-HISTSIZE=SAVEHIST=10000
-setopt incappendhistory
-setopt sharehistory
-setopt extendedhistory
+HISTSIZE=SAVEHIST=65536
+setopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
+setopt NO_HIST_BEEP
 
 # set prompt
 autoload -U colors && colors
