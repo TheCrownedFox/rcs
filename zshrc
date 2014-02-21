@@ -56,6 +56,16 @@ setopt NO_HIST_BEEP
 customDirPath() {
     if [[ $PWD == '/' ]]; then
         echo -n '/'
+    elif [[ $PWD == $HOME ]]; then
+        echo -n '~'
+    elif [[ $PWD/ == $HOME/* ]]; then
+        directories=($(echo $PWD | tr '/' ' '))
+        directories=(${directories[3, -1]})
+        newPath='~'
+        for d in $directories; do
+            newPath=${newPath}/${d:0:1}
+        done
+        echo -n $newPath
     else
         directories=($(echo $PWD | tr '/' ' '))
         newPath=''
