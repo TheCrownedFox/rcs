@@ -1,8 +1,18 @@
 !! search key = Caps lock
 !keycode 133 = Caps_Lock
 !
+
+
 !! search key = Super key
-keycode 66 = Super_L
+!keycode 66 = Super_L
+
+remove mod1 = Alt_L
+remove mod4 = Super_L
+add mod1 = Super_L
+add mod4 = Alt_L
+
+
+
 !keycode 133 = Super_L
 !! lower brightness key
 !keycode 72 = XF86XK_MonBrightnessDown

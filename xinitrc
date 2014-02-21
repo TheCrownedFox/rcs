@@ -28,7 +28,7 @@ xset fp rehash
 # begin running status information
 status-info &
 # apply xmodmap for keys
-xmodmap ~/.Xmodmap
+sh -c 'sleep 4s; xmodmap ~/.Xmodmap' &
 
 # set left pointer cursor
 xsetroot -cursor_name left_ptr
