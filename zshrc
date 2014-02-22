@@ -20,6 +20,7 @@ alias zrc="source ~/.zshrc"
 alias wifi="sudo wifi-menu mlan0"
 alias takeNote="vim $(date +%d_%m_%Y.md)"
 alias emacs="emacs -nw"
+alias ec="emacsclient -nw"
 # moving up dirs
 alias u="cd .."
 alias uu="cd ../.."
