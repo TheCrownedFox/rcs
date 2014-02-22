@@ -1,4 +1,6 @@
+#!/bin/zsh
 
+source .zshenv
 # some common aliases
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
@@ -21,6 +23,7 @@ alias wifi="sudo wifi-menu mlan0"
 alias takeNote="vim $(date +%d_%m_%Y.md)"
 alias emacs="emacs -nw"
 alias ec="emacsclient -nw"
+alias ecc="emacsclient -nw"
 # moving up dirs
 alias u="cd .."
 alias uu="cd ../.."
@@ -43,17 +46,41 @@ bindkey \^U backward-kill-line
 
 # history file stuff
 HISTFILE=~/.zhistory
-HISTSIZE=SAVEHIST=10000
-setopt incappendhistory
-setopt sharehistory
-setopt extendedhistory
+HISTSIZE=SAVEHIST=65536
+setopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
+setopt NO_HIST_BEEP
 
 # set prompt
+customDirPath() {
+    if [[ $PWD == '/' ]]; then
+        echo -n '/'
+    elif [[ $PWD == $HOME ]]; then
+        echo -n '~'
+    elif [[ $PWD/ == $HOME/* ]]; then
+        directories=($(echo $PWD | tr '/' ' '))
+        directories=(${directories[3, -1]})
+        newPath='~'
+        for d in $directories; do
+            newPath=${newPath}/${d:0:1}
+        done
+        echo -n $newPath
+    else
+        directories=($(echo $PWD | tr '/' ' '))
+        newPath=''
+        for d in $directories; do
+            newPath=${newPath}/${d:0:1}
+        done
+        echo -n $newPath
+    fi
+}
+
 autoload -U colors && colors
-PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %n@%m:%{$fg[green]%}%~>%{$reset_color%}%} "
+setopt PROMPT_SUBST
+PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %n@%m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} "
 
 # enable autocompletion
 autoload -U compinit
@@ -66,4 +93,8 @@ unsetopt BEEP
 setopt EXTENDED_GLOB
 
 # change title of terminal emulator on directory change
-chpwd() { print -Pn "\e]2;zsh %~\a" }
+chpwd() { 
+    print -Pn "\e]2;zsh %~\a"
+    PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %n@%m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} "
+}
+
