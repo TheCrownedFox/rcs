@@ -1,8 +1,18 @@
 #!/bin/bash
 
 cd $HOME
+mkdir -p bin/gits
+cd bin/gits
 git clone https://github.com/TheCrownedFox/emacsConfig
 git clone https://github.com/TheCrownedFox/vimPlugins
+# toggle mouse util
+git clone https://github.com/TheCrownedFox/toggleMouse
+cd toggleMouse
+make
+cd $HOME/bin
+ln -s $HOME/bin/toggleMouse/toggleMouse toggleMouse
+# toggle setBright util
+git clone https://github.com/TheCrownedFox/setBright
 # need to init sub modules
 ln -s $HOME/emacsConfig .emacs.d
 ln -s $HOME/vimPlugins .vim
