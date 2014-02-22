@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-source .zshenv
+source ~/.zshenv
 # some common aliases
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
@@ -31,7 +31,7 @@ alias uuuu="cd ../../../.."
 alias uuuuu="cd ../../../../.."
 
 # set some env vars
-export TERM=xterm-256color
+#export TERM=xterm-256color
 export EDITOR=vim
 export BROWSER=chromium
 export TZ=America/Denver
