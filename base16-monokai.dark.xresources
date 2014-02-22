@@ -43,3 +43,8 @@ xterm*font : -*-fixed-*-*-*-18-*
 *.color15:      base07
 
 XTerm*eightBitInput: false
+
+URxvt.scrollstyle: plain
+URxvt.scrollBar_right: true
+!URxvt.modifier: super
+URxvt*font : -*-fixed-*-*-*-18-*

@@ -28,7 +28,7 @@ $HOME/bin/randomWallpaper.sh
 # begin running status information
 #status-info &
 # apply xmodmap for keys
-sh -c 'sleep 4s; xmodmap ~/.Xmodmap' &
+#sh -c 'sleep 4s; xmodmap ~/.Xmodmap' &
 
 # set left pointer cursor
 xsetroot -cursor_name left_ptr
@@ -41,6 +41,11 @@ xsetroot -cursor_name left_ptr
 TERM=xterm-256color
 export $TERM
 
+urxvtd -q -o -f
+
+emacs --daemon 
+
+xmodmap ~/.Xmodmap 
 #exec dwm
 exec xmonad
 
