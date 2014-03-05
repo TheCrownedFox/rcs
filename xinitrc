@@ -12,9 +12,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # prevent X from sleeping the monitor
-#setterm -blank 0 -powersave off -powerdown 0
-#xset s off
-#xset -dpms
+setterm -blank 0 -powersave off -powerdown 0
+xset s off
+xset -dpms
 
 # source Xresources
 xrdb -merge ~/.Xresources
