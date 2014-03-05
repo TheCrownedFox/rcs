@@ -20,7 +20,7 @@ alias chromeos="sudo cgpt -i 6 -P 0 -S 1 /dev/sda"
 alias git-diff="git difftool --tool=vimdiff"
 alias zrc="source ~/.zshrc"
 alias wifi="sudo wifi-menu mlan0"
-alias takeNote="vim $(date +%d_%m_%Y.md)"
+alias takeNote="vim $(date +%Y_%m_%d.md)"
 alias emacs="emacs -nw"
 alias ec="emacsclient -nw"
 alias ecc="emacsclient -nw"
@@ -53,6 +53,23 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
 setopt NO_HIST_BEEP
+
+# get color in man pages
+man() {
+    if [[ $TERM != 'linux' ]]; then
+        command \
+        env LESS_TERMCAP_mb=$'\E[01;31m' \
+        LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+        LESS_TERMCAP_me=$'\E[0m' \
+        LESS_TERMCAP_se=$'\E[0m' \
+        LESS_TERMCAP_so=$'\E[38;5;246m' \
+        LESS_TERMCAP_ue=$'\E[0m' \
+        LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+        man "$@"
+    else
+        command man "$@"
+    fi
+}
 
 # set prompt
 customDirPath() {
