@@ -75,7 +75,7 @@ man() {
 }
 
 # set prompt
-myPrompt='%{%{$fg[magenta]%}[%T]%{$reset_color%}${viMode}$(gitPrompt) %m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} '
+myPrompt='%{%{$fg[magenta]%}[%T]%{$reset_color%}${viMode}$(gitPrompt) $(hostPrompt):%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} '
 # creates fish style cwd
 customDirPath() {
     if [[ $PWD == '/' ]]; then
@@ -139,11 +139,13 @@ gitBranch() {
 gitPrompt() {
     if [ -d .git ]; then
         currentBranch=$(gitBranch)
+        # check if theres changes to commit
         if [ -z "$(git status --porcelain)" ]; then
             branchColor="%{$fg[green]%}"
         else
             branchColor="%{$fg[red]%}"
         fi
+        # check if there are commits to push
         if [ -n "$(git status | grep 'branch is ahead')" ]; then
             bracketColor="%{$fg[yellow]%}"
         else
@@ -152,6 +154,18 @@ gitPrompt() {
         echo -n "${bracketColor}[%{$reset_color%}${branchColor}${currentBranch}%{$reset_color%}${bracketColor}]%{$reset_color%}"
     fi
 }
+
+# set host prompt
+
+hostPrompt() {
+    # check if connected over ssh
+    if [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_CLIENT" ]; then
+        echo -n "%{$fg[red]%}%m%{$reset_color%}"
+    else
+        echo -n "%m"
+    fi
+}
+
 
 setopt PROMPT_SUBST # allows for commands to be run in the prompt
 PS1=$myPrompt
