@@ -75,7 +75,7 @@ man() {
 }
 
 # set prompt
-myPrompt='%{%{$fg[magenta]%}[%T]%{$reset_color%} ${viMode} %m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} '
+myPrompt='%{%{$fg[magenta]%}[%T]%{$reset_color%} ${viMode} $(gitPrompt) %m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} '
 # creates fish style cwd
 customDirPath() {
     if [[ $PWD == '/' ]]; then
@@ -128,6 +128,19 @@ function TRAPINT() {
     PS1=$myPrompt
     zle && zle reset-prompt
     return $(( 128 + $1 ))
+}
+
+# put git info in prompt
+
+gitBranch() {
+    echo -n $(git rev-parse --abbrev-ref HEAD)
+}
+
+gitPrompt() {
+    if [ -d .git ]; then
+        currentBranch=$(gitBranch)
+        echo -n $currentBranch
+    fi
 }
 
 setopt PROMPT_SUBST # allows for commands to be run in the prompt
