@@ -36,6 +36,7 @@ alias uuuuu="cd ../../../../.."
 export EDITOR=vim
 export BROWSER=chromium
 export TZ=America/Denver
+export KEYTIMEOUT=1
 
 # set vi mode
 bindkey -v
@@ -72,6 +73,8 @@ man() {
 }
 
 # set prompt
+myPrompt='%{%{$fg[magenta]%}[%T]%{$reset_color%} ${viMode} %m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} '
+# creates fish style cwd
 customDirPath() {
     if [[ $PWD == '/' ]]; then
         echo -n '/'
@@ -95,9 +98,39 @@ customDirPath() {
     fi
 }
 
+# get vi mode in prompt
+viInsertMode="[INS]"
+viCommandMode="[CMD]"
+viMode=$viInsertMode
+
+# called on keymap change
+function zle-keymap-select {
+    # change viMode to match proper mode
+    viMode="${${KEYMAP/vicmd/${viCommandMode}}/(main|viins)/${viInsertMode}}"
+    # update prompt
+    PS1=$myPrompt
+    # redraw prompt
+    zle reset-prompt
+}
+zle -N zle-keymap-select
+
+# called on line finish
+function zle-line-finish {
+    # set viMode back to insert
+    viMode=$viInsertMode
+}
+zle -N zle-line-finish
+
+function TRAPINT() {
+    viMode=$viInsertMode
+    PS1=$myPrompt
+    zle && zle reset-prompt
+    return $(( 128 + $1 ))
+}
+
 autoload -U colors && colors
 setopt PROMPT_SUBST
-PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} "
+PS1=$myPrompt
 
 # enable autocompletion
 autoload -U compinit
@@ -109,9 +142,10 @@ unsetopt BEEP
 # extended globbing features
 setopt EXTENDED_GLOB
 
-# change title of terminal emulator on directory change
 chpwd() { 
+    # change title of terminal emulator on directory change
     print -Pn "\e]2;zsh %~\a"
-    PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %n@%m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} "
+    # change promp to match new cwd
+    PS1=$myPrompt
 }
 
