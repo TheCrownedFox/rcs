@@ -144,7 +144,7 @@ gitPrompt() {
         else
             branchColor="%{$fg[red]%}"
         fi
-        echo -n "${branchColor}${currentBranch}%{$reset_color%}"
+        echo -n "[${branchColor}${currentBranch}%{$reset_color%}]"
     fi
 }
 
