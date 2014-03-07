@@ -53,6 +53,8 @@ setopt HIST_NO_STORE
 setopt NO_HIST_BEEP
 
 # set prompt
+
+# creates fish style directory path
 customDirPath() {
     if [[ $PWD == '/' ]]; then
         echo -n '/'
@@ -77,7 +79,7 @@ customDirPath() {
 }
 
 autoload -U colors && colors
-setopt PROMPT_SUBST
+setopt PROMPT_SUBST # allows for commands to be run in prompt
 PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %n@%m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} "
 
 # enable autocompletion
