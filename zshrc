@@ -75,7 +75,7 @@ man() {
 }
 
 # set prompt
-myPrompt='%{%{$fg[magenta]%}[%T]%{$reset_color%} ${viMode} $(gitPrompt) %m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} '
+myPrompt='%{%{$fg[magenta]%}[%T]%{$reset_color%}${viMode}$(gitPrompt) %m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} '
 # creates fish style cwd
 customDirPath() {
     if [[ $PWD == '/' ]]; then
@@ -144,7 +144,12 @@ gitPrompt() {
         else
             branchColor="%{$fg[red]%}"
         fi
-        echo -n "[${branchColor}${currentBranch}%{$reset_color%}]"
+        if [ -n "$(git status | grep 'branch is ahead')" ]; then
+            bracketColor="%{$fg[yellow]%}"
+        else
+            bracketColor="%{$fg[white]%}"
+        fi
+        echo -n "${bracketColor}[%{$reset_color%}${branchColor}${currentBranch}%{$reset_color%}${bracketColor}]%{$reset_color%}"
     fi
 }
 
