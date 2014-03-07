@@ -97,7 +97,7 @@ customDirPath() {
 
 autoload -U colors && colors
 setopt PROMPT_SUBST
-PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %n@%m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} "
+PS1="%{%{$fg[magenta]%}[%T]%{$reset_color%} %m:%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} "
 
 # enable autocompletion
 autoload -U compinit
