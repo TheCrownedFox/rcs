@@ -16,18 +16,38 @@ setterm -blank 0 -powersave off -powerdown 0
 xset s off
 xset -dpms
 
+# source Xresources
+xrdb -merge ~/.Xresources
+
 # add extra fonts to X
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
 # load random wallpaper
-randomWallpaper.sh
+$HOME/bin/randomWallpaper.sh
 # begin running status information
-status-info &
+#status-info &
 # apply xmodmap for keys
-xmodmap ~/.Xmodmap
+#sh -c 'sleep 4s; xmodmap ~/.Xmodmap' &
 
-exec dwm
+# set left pointer cursor
+xsetroot -cursor_name left_ptr
+
+# for xmonad only, set tray 
+#trayer --edge top --align right --SetDocType true --SetPartialStrut true \
+#    --expand true --width 10 --transparent true --tint 0x191970 --height 12 &
+
+# set term env var
+TERM=xterm-256color
+export $TERM
+
+urxvtd -q -o -f
+
+emacs --daemon 
+
+xmodmap ~/.Xmodmap 
+#exec dwm
+exec xmonad
 
 # exec gnome-session
 # exec startkde

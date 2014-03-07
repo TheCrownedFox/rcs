@@ -28,6 +28,8 @@ alias rcs "vim ~/rcs/"
 alias asgard "ssh -o PORT=8081 austin@lightningcougar.dyndns.info"
 alias chromeos "sudo cgpt -i 6 -P 0 -S 1 /dev/sda"
 alias git-diff "git difftool --tool=vimdiff"
+alias wifi "sudo wifi-menu mlan0"
+alias takeNote "vim (date +%d_%m_%Y.md)"
 
 # moving up dirs
 alias u "cd .."
@@ -36,9 +38,15 @@ alias uuu "cd ../../.."
 alias uuuu "cd ../../../.."
 alias uuuuu "cd ../../../../.."
 
-# add to path
+# add ~/bin to path variable for my own shell scripts
+set PATH $PATH /home/austin/bin  $HOME/.rvm/bin 
+#/home/austin/android-sdks/tools/ /home/austin/android-sdks/platform-tools/
+
+# add ruby rvm stuff to PATH
 
 # sudo !! function
 function sudo!!
 	eval sudo $history[1]
 end
+
+source ~/.config.fish/functions.rvm.fish

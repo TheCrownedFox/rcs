@@ -28,6 +28,11 @@ set showcmd
 "begin pathogen
 execute pathogen#infect()
 
+"set syntastic to use python3 for checking python files
+if executable("python3") == 1
+    let g:syntastic_python_python_exe = "python3"
+endif
+
 
 "Key mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -44,6 +49,7 @@ execute pathogen#infect()
 "commands to switch between hex and normal
 command! ToHex %!xxd
 command! FromHex %!xxd -r
+command! SpellOn setlocal spell spelllang=en_us
 
 
 "set leader key to \
@@ -54,6 +60,7 @@ let @a=':s/<\/p>\n/ /g:s/<p class="calibre2">//g^i<p class="calibre2">$A</p>
 
 "set leader key mappings
 nnoremap <leader>c :Ctermvsplit<cr>
+nnoremap <leader>C :ConqueTermTab bash<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>s :source $MYVIMRC<cr>
@@ -67,14 +74,14 @@ nnoremap <leader>r :call ToggleNumbering()<cr>
 
 "some eclim mappings TODO need to come up with a better way to do this
 "starts eclim service crap
-nnoremap <leader>e :PingEclim<cr>
+"nnoremap <leader>e :PingEclim<cr>
 "opens project tree
-nnoremap <leader>t :ProjectTree 
+"nnoremap <leader>t :ProjectTree 
 "some java specific mappings
-au FileType java nnoremap <buffer> <leader>o :JavaImport<cr>
-au FileType java nnoremap <buffer> <leader>O :JavaImportOrganize<cr>
-au FileType java nnoremap <buffer> <leader>a :JavaCorrect<cr>
-au FileType java nnoremap <buffer> <leader>i :JavaImpl<cr>
+"au FileType java nnoremap <buffer> <leader>o :JavaImport<cr>
+"au FileType java nnoremap <buffer> <leader>O :JavaImportOrganize<cr>
+"au FileType java nnoremap <buffer> <leader>a :JavaCorrect<cr>
+"au FileType java nnoremap <buffer> <leader>i :JavaImpl<cr>
 
 "Fish specific stuff
 au FileType fish compiler fish
@@ -146,7 +153,7 @@ set nofoldenable
 au BufWinLeave * silent! mkview
 au BufWinenter * silent! loadview
 
-
+"Turned off because it runs slooooooow
 "Line Numbers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "make sure that vim opens in relative numbering mode
@@ -209,8 +216,4 @@ function! ToggleNumbering()
     endif
 endfunction
 
-"turn off caps lock
-function! NoCapsLock()
-    echo system("python2 ", 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)')
-endfunction
 
