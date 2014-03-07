@@ -139,7 +139,12 @@ gitBranch() {
 gitPrompt() {
     if [ -d .git ]; then
         currentBranch=$(gitBranch)
-        echo -n $currentBranch
+        if [ -z "$(git status --porcelain)" ]; then
+            branchColor="%{$fg[green]%}"
+        else
+            branchColor="%{$fg[red]%}"
+        fi
+        echo -n "${branchColor}${currentBranch}%{$reset_color%}"
     fi
 }
 
