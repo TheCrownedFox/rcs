@@ -54,6 +54,8 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
 setopt NO_HIST_BEEP
+# allow colors
+autoload -U colors && colors
 
 # get color in man pages
 man() {
@@ -100,7 +102,7 @@ customDirPath() {
 
 # get vi mode in prompt
 viInsertMode="[INS]"
-viCommandMode="[CMD]"
+viCommandMode="%{$fg[cyan]%}[CMD]%{$reset_color%}"
 viMode=$viInsertMode
 
 # called on keymap change
@@ -128,7 +130,6 @@ function TRAPINT() {
     return $(( 128 + $1 ))
 }
 
-autoload -U colors && colors
 setopt PROMPT_SUBST
 PS1=$myPrompt
 
