@@ -64,7 +64,7 @@ gitBranch() {
 }
 
 gitPrompt() {
-    if [ -z "$(git rev-parse)" ]; then
+    if [[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" == true ]]; then
         currentBranch=$(gitBranch)
         # check if theres changes to commit
         if [ -z "$(git status --porcelain)" ]; then
