@@ -41,6 +41,7 @@ export KEYTIMEOUT=1
 # set vi mode
 bindkey -v
 bindkey \^U backward-kill-line
+bindkey \^R history-incremental-search-backward
 
 # rvm thing
 [[ -s "$HOME/.rvm/scripts/rvm" ]] &&  . "$HOME/.rvm/scripts/rvm"
