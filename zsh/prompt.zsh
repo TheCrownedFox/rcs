@@ -1,3 +1,4 @@
+#!/bin/zsh
 
 # set prompt
 myPrompt='%{${magenta}[%T]${reset_color}${viMode}$(gitPrompt) $(hostPrompt):${green}$(customDirPath)>${reset_color}%} '
@@ -63,7 +64,7 @@ gitBranch() {
 }
 
 gitPrompt() {
-    if [ -d .git ]; then
+    if [ -z "$(git rev-parse)" ]; then
         currentBranch=$(gitBranch)
         # check if theres changes to commit
         if [ -z "$(git status --porcelain)" ]; then
