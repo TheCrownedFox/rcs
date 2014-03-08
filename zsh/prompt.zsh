@@ -1,6 +1,7 @@
 
 # set prompt
-myPrompt='%{%{$fg[magenta]%}[%T]%{$reset_color%}${viMode}$(gitPrompt) $(hostPrompt):%{$fg[green]%}$(customDirPath)>%{$reset_color%}%} '
+myPrompt='%{${magenta}[%T]${reset_color}${viMode}$(gitPrompt) $(hostPrompt):${green}$(customDirPath)>${reset_color}%} '
+
 # creates fish style cwd
 customDirPath() {
     if [[ $PWD == '/' ]]; then
@@ -27,7 +28,7 @@ customDirPath() {
 
 # get vi mode in prompt
 viInsertMode="[INS]"
-viCommandMode="%{$fg[cyan]%}[CMD]%{$reset_color%}"
+viCommandMode="${cyan}[CMD]${reset_color}"
 viMode=$viInsertMode
 
 # called on keymap change
@@ -66,17 +67,17 @@ gitPrompt() {
         currentBranch=$(gitBranch)
         # check if theres changes to commit
         if [ -z "$(git status --porcelain)" ]; then
-            branchColor="%{$fg[green]%}"
+            branchColor="${green}"
         else
-            branchColor="%{$fg[red]%}"
+            branchColor="${red}"
         fi
         # check if there are commits to push
         if [ -n "$(git status | grep 'branch is ahead')" ]; then
-            bracketColor="%{$fg[yellow]%}"
+            bracketColor="${yellow}"
         else
-            bracketColor="%{$fg[white]%}"
+            bracketColor="${white}"
         fi
-        echo -n "${bracketColor}[%{$reset_color%}${branchColor}${currentBranch}%{$reset_color%}${bracketColor}]%{$reset_color%}"
+        echo -n "${bracketColor}[${reset_color}${branchColor}${currentBranch}${reset_color}${bracketColor}]${reset_color}"
     fi
 }
 
@@ -85,7 +86,7 @@ gitPrompt() {
 hostPrompt() {
     # check if connected over ssh
     if [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_CLIENT" ]; then
-        echo -n "%{$fg[red]%}%m%{$reset_color%}"
+        echo -n "${red}%m${reset_color}"
     else
         echo -n "%m"
     fi

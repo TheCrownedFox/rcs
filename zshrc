@@ -56,6 +56,15 @@ setopt HIST_NO_STORE
 setopt NO_HIST_BEEP
 # allow colors
 autoload -U colors && colors
+black="%{$fg[black]%}"
+green="%{$fg[green]%}"
+blue="%{$fg[blue]%}"
+cyan="%{$fg[cyan]%}"
+red="%{$fg[red]%}"
+yellow="%{$fg[yellow]%}"
+magenta="%{$fg[magenta]%}"
+white="%{$fg[white]%}"
+reset_color="%{$reset_color%}"
 
 # get color in man pages
 man() {
