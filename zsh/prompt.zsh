@@ -60,7 +60,7 @@ function TRAPINT() {
 # put git info in prompt
 
 gitBranch() {
-    echo -n $(git rev-parse --abbrev-ref HEAD)
+    echo -n $(git branch | sed -n '/\* /s///p')
 }
 
 gitPrompt() {
