@@ -24,6 +24,7 @@ alias takeNote="vim $(date +%Y_%m_%d.md)"
 alias emacs="emacs -nw"
 alias ec="emacsclient -nw"
 alias ecc="emacsclient -nw"
+alias cls="clear; ls"
 # moving up dirs
 alias u="cd .."
 alias uu="cd ../.."
