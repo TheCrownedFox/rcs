@@ -13,16 +13,22 @@ customDirPath() {
         directories=($(echo $PWD | tr '/' ' '))
         directories=(${directories[3, -1]})
         newPath='~'
+        lastDir=$directories[$#directories]
+        directories[$#directories]=''
         for d in $directories; do
             newPath=${newPath}/${d:0:1}
         done
+        newPath=${newPath}/${lastDir}
         echo -n $newPath
     else
         directories=($(echo $PWD | tr '/' ' '))
         newPath=''
+        lastDir=$directories[$#directories]
+        directories[$#directories]=''
         for d in $directories; do
             newPath=${newPath}/${d:0:1}
         done
+        newPath=${newPath}/${lastDir}
         echo -n $newPath
     fi
 }
