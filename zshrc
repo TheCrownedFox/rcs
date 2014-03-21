@@ -40,6 +40,7 @@ export KEYTIMEOUT=1
 # set term on Asgard
 if [[ $(cat /etc/hostname) == "Asgard" ]]; then
     export TERM=xterm-256color
+    PATH=$HOME/bin/nand2tetris:$PATH
 fi
 
 # set vi mode
