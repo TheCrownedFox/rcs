@@ -68,6 +68,10 @@ magenta="%{$fg[magenta]%}"
 white="%{$fg[white]%}"
 reset_color="%{$reset_color%}"
 
+if [[ $(cat /etc/hostname) == "Eir" ]]; then
+    PATH=$HOME/bin/nand2tetris/:$PATH
+fi
+
 # get color in man pages
 man() {
     if [[ $TERM != 'linux' ]]; then
