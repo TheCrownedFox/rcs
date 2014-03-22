@@ -33,11 +33,15 @@ alias uuuu="cd ../../../.."
 alias uuuuu="cd ../../../../.."
 
 # set some env vars
-#export TERM=xterm-256color
 export EDITOR=vim
 export BROWSER=chromium
 export TZ=America/Denver
 export KEYTIMEOUT=1
+# set term on Asgard
+if [[ $(cat /etc/hostname) == "Asgard" ]]; then
+    export TERM=xterm-256color
+    PATH=$HOME/bin/nand2tetris:$PATH
+fi
 
 # set vi mode
 bindkey -v
