@@ -74,6 +74,9 @@ reset_color="%{$reset_color%}"
 
 if [[ $(cat /etc/hostname) == "Eir" ]]; then
     PATH=$HOME/bin/nand2tetris/:$PATH
+    if [[ $(ps -e | grep 'xmonad') != '' ]]; then
+        xmodmap $HOME/.Xmodmap
+    fi
 fi
 
 # get color in man pages
