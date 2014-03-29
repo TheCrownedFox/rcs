@@ -25,6 +25,7 @@ alias emacs="emacs -nw"
 alias ec="emacsclient -nw"
 alias ecc="emacsclient -nw"
 alias cls="clear; ls"
+alias newTerm="(urxvtc &)"
 # moving up dirs
 alias u="cd .."
 alias uu="cd ../.."
@@ -37,6 +38,7 @@ export EDITOR=vim
 export BROWSER=chromium
 export TZ=America/Denver
 export KEYTIMEOUT=1
+export LS_COLORS="ow=93;41;1"
 # set term on Asgard
 if [[ $(cat /etc/hostname) == "Asgard" ]]; then
     export TERM=xterm-256color
