@@ -17,7 +17,8 @@ xset s off
 xset -dpms
 
 # source Xresources
-xrdb -merge ~/.Xresources
+#xrdb -merge ~/.Xresources
+xrdb -merge ~/.Xdefaults
 
 # add extra fonts to X
 xset +fp /usr/share/fonts/local
@@ -45,8 +46,9 @@ urxvtd -q -o -f
 
 emacs --daemon 
 
-xmodmap ~/.Xmodmap 
+#xmodmap ~/.Xmodmap 
 #exec dwm
+export DEFAULT_SESSION=xmonad
 exec xmonad
 
 # exec gnome-session
