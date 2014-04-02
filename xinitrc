@@ -39,17 +39,16 @@ xsetroot -cursor_name left_ptr
 #    --expand true --width 10 --transparent true --tint 0x191970 --height 12 &
 
 # set term env var
-TERM=xterm-256color
-export $TERM
+export TERM=xterm-256color
 
 urxvtd -q -o -f
 
-emacs --daemon 
+#emacs --daemon 
 
 #xmodmap ~/.Xmodmap 
 #exec dwm
 export DEFAULT_SESSION=xmonad
-exec xmonad
+exec $DEFAULT_SESSION
 
 # exec gnome-session
 # exec startkde
