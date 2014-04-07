@@ -47,8 +47,8 @@ urxvtd -q -o -f
 
 #xmodmap ~/.Xmodmap 
 #exec dwm
-export DEFAULT_SESSION=xmonad
-exec $DEFAULT_SESSION
+#export DEFAULT_SESSION=xmonad
+exec $1
 
 # exec gnome-session
 # exec startkde
