@@ -17,7 +17,8 @@ xset s off
 xset -dpms
 
 # source Xresources
-xrdb -merge ~/.Xresources
+#xrdb -merge ~/.Xresources
+xrdb -merge ~/.Xdefaults
 
 # add extra fonts to X
 xset +fp /usr/share/fonts/local
@@ -38,16 +39,16 @@ xsetroot -cursor_name left_ptr
 #    --expand true --width 10 --transparent true --tint 0x191970 --height 12 &
 
 # set term env var
-TERM=xterm-256color
-export $TERM
+export TERM=xterm-256color
 
 urxvtd -q -o -f
 
-emacs --daemon 
+#emacs --daemon 
 
-xmodmap ~/.Xmodmap 
+#xmodmap ~/.Xmodmap 
 #exec dwm
-exec xmonad
+#export DEFAULT_SESSION=xmonad
+exec $1
 
 # exec gnome-session
 # exec startkde
