@@ -149,6 +149,7 @@ alias uuuuuuuuu='cd ../../../../../../../../..'
 alias uuuuuuuuuu='cd ../../../../../../../../../..'
 alias uuuuuuuuuuu='cd ../../../../../../../../../../..'
 
+
 # set vi mode
 set -o vi
 
@@ -162,6 +163,16 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/opt/dmd2/linux/bin64
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] & source "$HOME/.rvm/scripts/rvm"
+
+if [[ $USER == "adivines" ]]; then
+    alias python3='~/python/Python-3.3.2/python'
+    alias gem=gem1.9.3
+    alias ruby=ruby1.9.3
+    alias rake=rake1.9.3
+    export GEM_HOME=~/.gem
+    export GEM_PATH=$GEM_HOME/bin
+    export PATH=$GEM_PATH:$PATH
+fi
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
