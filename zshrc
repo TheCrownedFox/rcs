@@ -25,7 +25,6 @@ alias emacs="emacs -nw"
 alias ec="emacsclient -nw"
 alias ecc="emacsclient -nw"
 alias cls="clear; ls"
-alias newTerm="(urxvtc &)"
 # moving up dirs
 alias u="cd .."
 alias uu="cd ../.."
@@ -43,6 +42,7 @@ export LS_COLORS="ow=93;41;1"
 if [[ $(cat /etc/hostname) == "Asgard" ]]; then
     export TERM=xterm-256color
     PATH=$HOME/bin/nand2tetris:$PATH
+    alias newTerm="(gnome-terminal &)"
 fi
 
 # set vi mode
@@ -76,6 +76,7 @@ reset_color="%{$reset_color%}"
 
 if [[ $(cat /etc/hostname) == "Eir" ]]; then
     PATH=$HOME/bin/nand2tetris/:$PATH
+    alias newTerm="(urxvtc &)"
     if [[ $(ps -e | grep 'xmonad') != '' ]]; then
         xmodmap $HOME/.Xmodmap
     fi
