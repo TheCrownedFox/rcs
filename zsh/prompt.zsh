@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # set prompt
-myPrompt='%{${magenta}[%T]${reset_color}${viMode}$(gitPrompt) $(hostPrompt):${green}$(customDirPath)>${reset_color}%} '
+myPrompt='%{${magenta}[%T]${reset_color}${viMode}$(versionControlInfo) $(hostPrompt):${green}$(customDirPath)>${reset_color}%} '
 
 # creates fish style cwd
 customDirPath() {
@@ -85,6 +85,24 @@ gitPrompt() {
             bracketColor="${white}"
         fi
         echo -n "${bracketColor}[${reset_color}${branchColor}${currentBranch}${reset_color}${bracketColor}]${reset_color}"
+    fi
+}
+
+# get hg info in prompt
+
+hgPrompt() {
+    if [[ "$(hg --cwd $PWD root &> /dev/null)" == true ]]; then
+        echo  "yes"
+    fi
+}
+
+# gets version control info
+
+versionControlInfo() {
+    if [[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" == true ]]; then
+        gitPrompt
+    elif [[ "$(hg --cwd $PWD root &> /dev/null)" == true ]]; then 
+        hgPrompt
     fi
 }
 
