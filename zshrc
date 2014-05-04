@@ -1,6 +1,12 @@
 #!/bin/zsh
 
 source ~/.zshenv
+# set some env vars
+export EDITOR="emacsclient -nw"
+export BROWSER=chromium
+export TZ=America/Denver
+export KEYTIMEOUT=1
+export LS_COLORS="ow=93;41;1"
 # some common aliases
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
@@ -20,7 +26,7 @@ alias chromeos="sudo cgpt -i 6 -P 0 -S 1 /dev/sda"
 alias git-diff="git difftool --tool=vimdiff"
 alias zrc="source ~/.zshrc"
 alias wifi="sudo wifi-menu mlan0"
-alias takeNote="vim $(date +%Y_%m_%d.md)"
+alias takeNote="$(echo $EDITOR) $(date +%Y_%m_%d.org)"
 alias emacs="emacs -nw"
 alias ec="emacsclient -nw"
 alias ecc="emacsclient -nw"
@@ -32,12 +38,6 @@ alias uuu="cd ../../.."
 alias uuuu="cd ../../../.."
 alias uuuuu="cd ../../../../.."
 
-# set some env vars
-export EDITOR=vim
-export BROWSER=chromium
-export TZ=America/Denver
-export KEYTIMEOUT=1
-export LS_COLORS="ow=93;41;1"
 # set term on Asgard
 if [[ $(cat /etc/hostname) == "Asgard" ]]; then
     export TERM=xterm-256color
