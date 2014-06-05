@@ -7,6 +7,7 @@ export BROWSER=chromium
 export TZ=America/Denver
 export KEYTIMEOUT=1
 export LS_COLORS="ow=93;41;1"
+export GOPATH=$HOME/.go
 # some common aliases
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
