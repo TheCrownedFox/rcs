@@ -76,7 +76,7 @@ white="%{$fg[white]%}"
 reset_color="%{$reset_color%}"
 
 if [[ $(cat /etc/hostname) == "Eir" ]]; then
-    PATH=$HOME/bin/nand2tetris/:$PATH
+    PATH=$GOPATH/bin/:$HOME/bin/nand2tetris/:$PATH
     alias newTerm="(urxvtc &)"
     if [[ $(ps -e | grep 'xmonad') != '' ]]; then
         xmodmap $HOME/.Xmodmap
