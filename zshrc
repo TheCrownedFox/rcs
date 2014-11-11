@@ -70,6 +70,8 @@ bindkey \^R history-incremental-search-backward
 # make ansi-term work with zsh
 if [[ $TERM == 'eterm-color' ]]; then
     export TERM='xterm-256color'
+    export VISUAL=emacsclient
+    #export ALTERNATE_EDITOR=''
 fi
 
 
@@ -127,11 +129,11 @@ unsetopt BEEP
 setopt EXTENDED_GLOB
 
 chpwd() { 
-    if [ -n $INSIDE_EMACS ]; then
+    if [[ $INSIDE_EMACS != '' ]]; then
         # make zsh work with ansi-term
-        chpwd() { print -P "\033AnSiTc %d" }
+        #chpwd() { print -P "\033AnSiTc %d" }
         print -P "\033AnSiTu %n"
-        print -P "\033AnSiTc %"
+        print -P "\033AnSiTc %d"
     else
         # change title of terminal emulator on directory change
         print -Pn "\e]2;zsh %~\a"
