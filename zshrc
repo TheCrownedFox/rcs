@@ -9,10 +9,6 @@ export KEYTIMEOUT=1
 export LS_COLORS="ow=93;41;1"
 export GOPATH=$HOME/.go
 # some common aliases
-alias ls="ls --color=auto"
-alias grep="grep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias egrep="egrep --color=auto"
 alias ll="ls -alF"
 alias la="ls -A"
 # serve php files
@@ -31,6 +27,7 @@ alias takeNote="$(echo $EDITOR) $(date +%Y_%m_%d.org)"
 alias emacs="emacs -nw"
 alias ec="emacsclient -nw"
 alias ecc="emacsclient -nw"
+alias ff=ecc
 alias cls="clear; ls"
 # moving up dirs
 alias u="cd .."
@@ -39,11 +36,27 @@ alias uuu="cd ../../.."
 alias uuuu="cd ../../../.."
 alias uuuuu="cd ../../../../.."
 
-# set term on Asgard
-if [[ $(cat /etc/hostname) == "Asgard" ]]; then
-    export TERM=xterm-256color
-    PATH=$HOME/bin/nand2tetris:$PATH
-    alias newTerm="(gnome-terminal &)"
+# mac osx configs
+if [ -d /Applications ]; then
+    alias ls="ls -G"
+else
+    alias ls="ls --color=auto"
+    alias grep="grep --color=auto"
+    alias fgrep="fgrep --color=auto"
+    alias egrep="egrep --color=auto"
+    # set term on Asgard
+    if [[ $(cat /etc/hostname) == "Asgard" ]]; then
+        export TERM=xterm-256color
+        PATH=$HOME/bin/nand2tetris:$PATH
+        alias newTerm="(gnome-terminal &)"
+    fi
+    if [[ $(cat /etc/hostname) == "Eir" ]]; then
+        PATH=$GOPATH/bin/:$HOME/bin/nand2tetris/:$PATH
+        alias newTerm="(urxvtc &)"
+        if [[ $(ps -e | grep 'xmonad') != '' ]]; then
+            xmodmap $HOME/.Xmodmap
+        fi
+    fi
 fi
 
 # set vi mode
@@ -53,6 +66,14 @@ bindkey \^R history-incremental-search-backward
 
 # rvm thing
 [[ -s "$HOME/.rvm/scripts/rvm" ]] &&  . "$HOME/.rvm/scripts/rvm"
+
+# make ansi-term work with zsh
+if [[ $TERM == 'eterm-color' ]]; then
+    export TERM='xterm-256color'
+    export VISUAL=emacsclient
+    #export ALTERNATE_EDITOR=''
+fi
+
 
 # history file stuff
 HISTFILE=~/.zhistory
@@ -64,6 +85,7 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
 setopt NO_HIST_BEEP
 # allow colors
+setopt INTERACTIVE_COMMENTS # allows comments on command line
 autoload -U colors && colors
 black="%{$fg[black]%}"
 green="%{$fg[green]%}"
@@ -74,14 +96,6 @@ yellow="%{$fg[yellow]%}"
 magenta="%{$fg[magenta]%}"
 white="%{$fg[white]%}"
 reset_color="%{$reset_color%}"
-
-if [[ $(cat /etc/hostname) == "Eir" ]]; then
-    PATH=$GOPATH/bin/:$HOME/bin/nand2tetris/:$PATH
-    alias newTerm="(urxvtc &)"
-    if [[ $(ps -e | grep 'xmonad') != '' ]]; then
-        xmodmap $HOME/.Xmodmap
-    fi
-fi
 
 # get color in man pages
 man() {
@@ -115,9 +129,18 @@ unsetopt BEEP
 setopt EXTENDED_GLOB
 
 chpwd() { 
-    # change title of terminal emulator on directory change
-    print -Pn "\e]2;zsh %~\a"
+    if [[ $INSIDE_EMACS != '' ]]; then
+        # make zsh work with ansi-term
+        #chpwd() { print -P "\033AnSiTc %d" }
+        print -P "\033AnSiTu %n"
+        print -P "\033AnSiTc %d"
+    else
+        # change title of terminal emulator on directory change
+        print -Pn "\e]2;zsh %~\a"
+    fi
     # change promp to match new cwd
     PS1=$myPrompt
 }
 
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
