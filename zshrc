@@ -8,6 +8,7 @@ export TZ=America/Denver
 export KEYTIMEOUT=1
 export LS_COLORS="ow=93;41;1"
 export GOPATH=$HOME/.go
+export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
 # some common aliases
 alias ll="ls -alF"
 alias la="ls -A"
@@ -39,6 +40,7 @@ alias uuuuu="cd ../../../../.."
 # mac osx configs
 if [ -d /Applications ]; then
     alias ls="ls -G"
+    export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/lib
 else
     alias ls="ls --color=auto"
     alias grep="grep --color=auto"
