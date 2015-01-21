@@ -52,11 +52,11 @@ else
         PATH=$HOME/bin/nand2tetris:$PATH
         alias newTerm="(gnome-terminal &)"
     fi
-    if [[ $(cat /etc/hostname) == "Eir" ]]; then
+    if [[ $(cat /etc/hostname) == "Eir" ]] || [[ $(cat /etc/hostname) == "Baldr" ]]; then
         PATH=$GOPATH/bin/:$HOME/bin/nand2tetris/:$PATH
         alias newTerm="(urxvtc &)"
         if [[ $(ps -e | grep 'xmonad') != '' ]]; then
-            xmodmap $HOME/.Xmodmap
+            xmodmap $HOME/.xmodmap
         fi
     fi
 fi

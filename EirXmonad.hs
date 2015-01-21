@@ -36,13 +36,15 @@ myKeys = [
 
 myManageHooks = composeAll [
     className =? "Chromium" --> doShift "web",
+    className =? "Chrome" --> doShift "web", -- TODO, doesn't work
     className =? "Zathura" --> doShift "pdf",
-    className =? "Emacs" --> doShift "emacs"
+    className =? "Emacs" --> doShift "emacs",
+    className=? "Thunderbird" --> doShift "emaill"
     --className =? "LibreOffice" --> doShift "4"
     ]
 
 --myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-myWorkspaces = ["term", "web", "pdf", "emacs", "5", "6", "7", "8", "9"]
+myWorkspaces = ["term", "web", "emacs", "pdf", "email", "6", "7", "8", "9"]
 
 myLayouts = Full ||| tall ||| Mirror tall
     where tall = Tall 1 (3 / 100) (1 / 2)
