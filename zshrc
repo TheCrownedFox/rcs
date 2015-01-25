@@ -46,9 +46,9 @@ else
     alias grep="grep --color=auto"
     alias fgrep="fgrep --color=auto"
     alias egrep="egrep --color=auto"
+    export TERM=xterm-256color
     # set term on Asgard
     if [[ $(cat /etc/hostname) == "Asgard" ]]; then
-        export TERM=xterm-256color
         PATH=$HOME/bin/nand2tetris:$PATH
         alias newTerm="(gnome-terminal &)"
     fi
