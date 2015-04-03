@@ -30,16 +30,21 @@ myKeys = [
 --    ((0, xK_F7), spawn "setBright inc 110"),
     ((mod4Mask, xK_p), spawn "dmenu_run -fn -*-fixed-*-*-*-18-*"),
     ((mod4Mask, xK_F1), spawn "xdotool click 1"),
-    ((mod4Mask, xK_F2), spawn "xdotool click 3")
+    ((mod4Mask, xK_F2), spawn "xdotool click 3"),
+    ((mod4Mask, xK_b), sendMessage ToggleStruts)
     ]
 
 myManageHooks = composeAll [
-    className =? "Zathura" --> doShift "3",
-    className =? "Chromium" --> doShift "2",
-    className =? "LibreOffice" --> doShift "4"
+    className =? "Chromium" --> doShift "web",
+    className =? "Chrome" --> doShift "web", -- TODO, doesn't work
+    className =? "Zathura" --> doShift "pdf",
+    className =? "Emacs" --> doShift "emacs",
+    className=? "Thunderbird" --> doShift "emaill"
+    --className =? "LibreOffice" --> doShift "4"
     ]
 
-myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+--myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+myWorkspaces = ["term", "web", "emacs", "pdf", "email", "6", "7", "8", "9"]
 
 myLayouts = Full ||| tall ||| Mirror tall
     where tall = Tall 1 (3 / 100) (1 / 2)

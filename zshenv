@@ -1,3 +1,3 @@
 
 typeset -U path
-path=(~/bin ~/.rvm/bin ~/.cabal/bin ~/opt/android-studio/sdk/platform-tools $path)
+path=(~/bin ~/.rvm/bin ~/.cabal/bin /usr/local/bin /Applications/Android\ Studio.app/sdk/platform-tools $path)

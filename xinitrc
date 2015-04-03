@@ -18,21 +18,27 @@ xset -dpms
 
 # source Xresources
 #xrdb -merge ~/.Xresources
-xrdb -merge ~/.Xdefaults
+#xrdb -merge ~/.Xdefaults TODO
 
 # add extra fonts to X
-xset +fp /usr/share/fonts/local
-xset fp rehash
+#xset +fp /usr/share/fonts/local
+#xset fp rehash
+
+# set key repeat rate
+xset r rate 300 25
 
 # load random wallpaper
-$HOME/bin/randomWallpaper.sh
+#$HOME/bin/randomWallpaper.sh
 # begin running status information
-#status-info &
+status-ino
 # apply xmodmap for keys
 #sh -c 'sleep 4s; xmodmap ~/.Xmodmap' &
 
 # set left pointer cursor
 xsetroot -cursor_name left_ptr
+
+# set colemak key layout
+setxkbmap us -variant colemak
 
 # for xmonad only, set tray 
 #trayer --edge top --align right --SetDocType true --SetPartialStrut true \
@@ -48,6 +54,7 @@ urxvtd -q -o -f
 #xmodmap ~/.Xmodmap 
 #exec dwm
 #export DEFAULT_SESSION=xmonad
+#exec $HOME/.cabal/bin/xmonad
 exec $1
 
 # exec gnome-session
